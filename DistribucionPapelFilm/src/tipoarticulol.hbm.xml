@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+
+    <class name="entidades.TipoArticulo" table="tipoarticulo">
+
+        <id name="OID" type="string">
+            <column name="OIDTipoArticulo"/>
+            <generator class="uuid2"/>
+        </id>
+
+        <property name="codigoTipoArticulo" type="int">
+            <column name="codigoTipoArticulo"/>
+        </property>
+
+        <property name="nombreTipoArticulo" type="string">
+            <column name="nombreTipoArticulo"/>
+        </property>
+        
+    </class>
+    
+</hibernate-mapping>
+

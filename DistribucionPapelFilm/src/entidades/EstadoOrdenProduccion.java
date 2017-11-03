@@ -12,7 +12,16 @@ package entidades;
 public class EstadoOrdenProduccion {
     
     private String nombreEstadoOrdenProduccion;
+    private int codigoEstadoOrdenProduccion;
 
+    public int getCodigoEstadoOrdenProduccion() {
+        return codigoEstadoOrdenProduccion;
+    }
+
+    public void setCodigoEstadoOrdenProduccion(int codigoEstadoOrdenProduccion) {
+        this.codigoEstadoOrdenProduccion = codigoEstadoOrdenProduccion;
+    }
+    
     public String getNombreEstadoOrdenProduccion() {
         return nombreEstadoOrdenProduccion;
     }
