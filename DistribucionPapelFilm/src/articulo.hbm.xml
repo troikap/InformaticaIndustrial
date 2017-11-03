@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+
+    <class name="entidades.Articulo" table="articulo">
+
+        <id name="OID" type="string">
+            <column name="OIDArticulo"/>
+            <generator class="uuid2"/>
+        </id>
+
+        <property name="codigoArticulo" type="int">
+            <column name="codigoArticulo"/>
+        </property>
+
+        <property name="descripccionArticulo" type="string">
+            <column name="descripccionArticulo"/>
+        </property>
+        
+        <property name="fechaInhabilitacionArticulo" type="date">
+            <column name="fechaInhabilitacionArticulo"/>
+        </property>
+        
+        <property name="nombreArticulo" type="string">
+            <column name="nombreArticulo"/>
+        </property>
+        
+        <many-to-one name="proveedor" class="entidades.Proveedor" not-null="true">
+            <column name="OIDProveedor"/>
+        </many-to-one>
+        
+        <many-to-one name="TipoArticulo" class="entidades.TipoArticulo" not-null="true">
+            <column name="OIDTipoArticulo"/>
+        </many-to-one>
+        
+    </class>
+    
+</hibernate-mapping>
+

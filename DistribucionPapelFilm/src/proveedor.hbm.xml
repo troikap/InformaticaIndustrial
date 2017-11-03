@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+
+    <class name="entidades.Proveedor" table="proveedor">
+
+        <id name="OID" type="string">
+            <column name="OIDProveedor"/>
+            <generator class="uuid2"/>
+        </id>
+
+        <property name="codigoProveedor" type="int">
+            <column name="codigoProveedor"/>
+        </property>
+
+        <property name="direccionProveedor" type="string">
+            <column name="direccionProveedor"/>
+        </property>
+        
+        <property name="correoProveedor" type="string">
+            <column name="correoProveedor"/>
+        </property>
+        
+        <property name="nombreProveedor" type="string">
+            <column name="nombreProveedor"/>
+        </property>
+        
+        <property name="telefonoProveedor" type="int">
+            <column name="telefonoProveedor"/>
+        </property>
+        
+    </class>
+    
+</hibernate-mapping>
+
