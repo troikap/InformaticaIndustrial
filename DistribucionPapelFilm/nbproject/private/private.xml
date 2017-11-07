@@ -3,14 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/TroikaP/Documents/GitHub/InformaticaIndustrial/DistribucionPapelFilm/src/entidades/Articulo.java</file>
-            <file>file:/C:/Users/TroikaP/Documents/GitHub/InformaticaIndustrial/DistribucionPapelFilm/src/atributoadicional.hbm.xml</file>
-            <file>file:/C:/Users/TroikaP/Documents/GitHub/InformaticaIndustrial/DistribucionPapelFilm/src/numeracionatributo.hbm.xml</file>
-            <file>file:/C:/Users/TroikaP/Documents/GitHub/InformaticaIndustrial/DistribucionPapelFilm/src/tipoimpuesto.hbm.xml</file>
-            <file>file:/C:/Users/TroikaP/Documents/GitHub/InformaticaIndustrial/DistribucionPapelFilm/src/proveedor.hbm.xml</file>
-            <file>file:/C:/Users/TroikaP/Documents/GitHub/InformaticaIndustrial/DistribucionPapelFilm/src/entidades/ProductoProcesoElaboracion.java</file>
-            <file>file:/C:/Users/TroikaP/Documents/GitHub/InformaticaIndustrial/DistribucionPapelFilm/src/subarticulo.hbm.xml</file>
-            <file>file:/C:/Users/TroikaP/Documents/GitHub/InformaticaIndustrial/DistribucionPapelFilm/src/articulo.hbm.xml</file>
+            <file>file:/C:/Users/TroikaP/Documents/GitHub/InformaticaIndustrial/DistribucionPapelFilm/src/ordenproduccionestado.hbm.xml</file>
+            <file>file:/C:/Users/TroikaP/Documents/GitHub/InformaticaIndustrial/DistribucionPapelFilm/src/entidades/ProductoTerminado.java</file>
+            <file>file:/C:/Users/TroikaP/Documents/GitHub/InformaticaIndustrial/DistribucionPapelFilm/src/entidades/RutaFabricacion.java</file>
+            <file>file:/C:/Users/TroikaP/Documents/GitHub/InformaticaIndustrial/DistribucionPapelFilm/src/entidades/SubArticulo.java</file>
+            <file>file:/C:/Users/TroikaP/Documents/GitHub/InformaticaIndustrial/DistribucionPapelFilm/src/ordenproduccion.hbm.xml</file>
+            <file>file:/C:/Users/TroikaP/Documents/GitHub/InformaticaIndustrial/DistribucionPapelFilm/src/hibernate.cfg.xml</file>
         </group>
     </open-files>
 </project-private>

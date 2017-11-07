@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+
+    <class name="entidades.CentroTrabajo" table="centrotrabajo">
+
+        <id name="OID" type="string">
+            <column name="OIDCentroTrabajo"/>
+            <generator class="uuid2"/>
+        </id>
+
+        <property name="codigoCentroTrabajo" type="int">
+            <column name="codigoCentroTrabajo"/>
+        </property>
+
+        <property name="nombreCentroTrabajo" type="string">
+            <column name="nombreCentroTrabajo"/>
+        </property>
+        
+        <property name="tiempoPorUnidadCentroTrabajo" type="float">
+            <column name="tiempoPorUnidadCentroTrabajo"/>
+        </property>
+        
+        <property name="tipoDeUnidadCentroTrabajo" type="string">
+            <column name="tipoDeUnidadCentroTrabajo"/>
+        </property>
+        
+        <bag name="maquinaHerramienta" table="MaquinaHerramienta" cascade="none" inverse="false">
+            <key column="OIDCentroTrabajo" not-null="false"/>
+            <one-to-many class="entidades.MaquinaHerramienta"/>
+        </bag>
+        
+    </class>
+    
+</hibernate-mapping>
+

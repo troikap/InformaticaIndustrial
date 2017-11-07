@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+
+    <class name="entidades.OrdenProduccion" table="ordenproduccion">
+
+        <id name="OID" type="string">
+            <column name="OIDOrdenProduccion"/>
+            <generator class="uuid2"/>
+        </id>
+
+        <property name="fechaEntregaOrdenProduccion" type="date">
+            <column name="fechaEntregaOrdenProduccion"/>
+        </property>
+
+        <property name="fechaRecepcionOrdenProduccion" type="date">
+            <column name="fechaRecepcionOrdenProduccion"/>
+        </property>
+        
+        <property name="numeroOrdenProduccion" type="int">
+            <column name="numeroOrdenProduccion"/>
+        </property>
+        
+        <bag name="productoTerminado" table="ProductoTerminado" cascade="none" inverse="false">
+            <key column="OIDOrdenProduccion" not-null="false"/>
+            <one-to-many class="entidades.ProductoTerminado"/>
+        </bag>
+        
+        <bag name="ordenProduccionEstado" table="OrdenProduccionEstado" cascade="none" inverse="false">
+            <key column="OIDOrdenProduccion" not-null="false"/>
+            <one-to-many class="entidades.OrdenProduccionEstado"/>
+        </bag>
+        
+    </class>
+    
+</hibernate-mapping>
+

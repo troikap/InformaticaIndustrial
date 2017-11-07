@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+
+    <class name="entidades.MaquinaHerramienta" table="maquinaherramienta">
+
+        <id name="OID" type="string">
+            <column name="OIDMaquinaHerramienta"/>
+            <generator class="uuid2"/>
+        </id>
+
+        <property name="codigoMaquinaHerramienta" type="int">
+            <column name="codigoMaquinaHerramienta"/>
+        </property>
+
+        <property name="descripcionMaquinaHerramienta" type="string">
+            <column name="descripcionMaquinaHerramienta"/>
+        </property>
+        
+        <property name="nombreMaquinaHerramienta" type="string">
+            <column name="nombreMaquinaHerramienta"/>
+        </property>
+        
+        <property name="numeroMaquinaHerramienta" type="int">
+            <column name="numeroMaquinaHerramienta"/>
+        </property>
+        
+    </class>
+    
+</hibernate-mapping>
+

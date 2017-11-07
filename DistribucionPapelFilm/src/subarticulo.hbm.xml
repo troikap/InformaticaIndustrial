@@ -14,17 +14,29 @@
             <column name="codigoSubArticulo"/>
         </property>
 
-        <property name="nombreAtributoAdicional" type="string">
-            <column name="nombreAtributoAdicional"/>
+        <property name="costoSubArticulo" type="float">
+            <column name="costoSubArticulo"/>
         </property>
         
-        <property name="fechaInhabilitacionAA" type="string">
-            <column name="fechaInhabilitacionAA"/>
+        <property name="descripcionSubArticulo" type="string">
+            <column name="descripcionSubArticulo"/>
         </property>
         
-        <property name="longitud" type="int">
-            <column name="longitud"/>
+        <property name="fechaInhabilitacionSubArticulo" type="date">
+            <column name="fechaInhabilitacionSubArticulo"/>
         </property>
+        
+        <property name="nombreSubArticulo" type="string">
+            <column name="nombreSubArticulo"/>
+        </property>
+        
+        <property name="stockSubArticulo" type="int">
+            <column name="stockSubArticulo"/>
+        </property>
+        
+        <many-to-one name="articulo" class="entidades.Articulo" not-null="true">
+            <column name="OIDArticulo"/>
+        </many-to-one>
         
     </class>
     

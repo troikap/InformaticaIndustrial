@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+
+    <class name="entidades.OrdenProduccionEstado" table="ordenproduccionestado">
+
+        <id name="OID" type="string">
+            <column name="OIDOrdenProduccionEstado"/>
+            <generator class="uuid2"/>
+        </id>
+
+        <property name="fechaOrdenProduccionEstado" type="date">
+            <column name="fechaOrdenProduccionEstado"/>
+        </property>
+
+        <many-to-one name="productoProcesoElaboracion" class="entidades.ProductoProcesoElaboracion" not-null="true">
+            <column name="OIDProductoProcesoElaboracion"/>
+        </many-to-one>
+        
+        <many-to-one name="estadoOrdenProduccion" class="entidades.EstadoOrdenProduccion" not-null="true">
+            <column name="OIDEstadoOrdenProduccion"/>
+        </many-to-one>
+        
+        <bag name="subArticulo" table="SubArticulo" cascade="none" inverse="false">
+            <key column="OIDOrdenProduccionEstado" not-null="false"/>
+            <one-to-many class="entidades.SubArticulo"/>
+        </bag>
+        
+        <many-to-one name="centroTrabajo" class="entidades.CentroTrabajo" not-null="true">
+            <column name="OIDCentroTrabajo"/>
+        </many-to-one>
+        
+        <many-to-one name="maquinaHerramienta" class="entidades.MaquinaHerramienta" not-null="true">
+            <column name="OIDMaquinaHerramienta"/>
+        </many-to-one>
+        
+    </class>
+    
+</hibernate-mapping>
+
