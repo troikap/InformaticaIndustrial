@@ -16,10 +16,6 @@ public class DTOTipoImpuesto {
         this.fecha = fecha;
     }
     
-
-    /**
-     * @return the codigoDTOTipoImpuesto
-     */
     public String getCodigoDTOTipoImpuesto() {
         return codigoDTOTipoImpuesto;
     }
@@ -31,9 +27,6 @@ public class DTOTipoImpuesto {
         this.codigoDTOTipoImpuesto = codigoDTOTipoImpuesto;
     }
 
-    /**
-     * @return the eliminar
-     */
     public boolean isEliminar() {
         return eliminar;
     }
@@ -45,9 +38,6 @@ public class DTOTipoImpuesto {
         this.eliminar = eliminar;
     }
 
-    /**
-     * @return the nombreDTOTipoImpuesto
-     */
     public String getNombreDTOTipoImpuesto() {
         return nombreDTOTipoImpuesto;
     }

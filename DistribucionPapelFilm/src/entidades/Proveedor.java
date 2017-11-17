@@ -5,6 +5,7 @@
  */
 package entidades;
 
+
 /**
  *
  * @author TroikaP
@@ -16,6 +17,15 @@ public class Proveedor {
     private String direccionProveedor;
     private String nombreProveedor;
     private int telefonoProveedor;
+    private String fechaInhabilitacionProveedor;
+
+    public String getFechaInhabilitacionProveedor() {
+        return fechaInhabilitacionProveedor;
+    }
+
+    public void setFechaInhabilitacionProveedor(String fechaInhabilitacionProveedor) {
+        this.fechaInhabilitacionProveedor = fechaInhabilitacionProveedor;
+    }
     
     public int getCodigoProveedor() {
         return codigoProveedor;
