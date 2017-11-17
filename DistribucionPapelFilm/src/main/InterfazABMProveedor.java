@@ -1,12 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package main;
 
-import dto.DTOProveedor;
-import static java.lang.Integer.parseInt;
+import dto.*;
 import java.util.List;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
@@ -16,14 +11,16 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author TroikaP
  */
-public class InterfazABMProveedor extends javax.swing.JPanel {
+public class InterfazABMProveedor extends javax.swing.JFrame {
     DefaultTableModel modeloTabla;
     private ExpertoDistribucionPapelFilm experto;
     private List<String> listCombox;
     InterfazPrincipal pantallaPrincipal;
-    /**
-     * Creates new form InterfazProveedor
-     */
+    
+    public InterfazABMProveedor() {
+        initComponents();
+    }
+
     public InterfazABMProveedor(ExpertoDistribucionPapelFilm experto, InterfazPrincipal interfaz) {
         initComponents();
         modeloTabla=new DefaultTableModel();
@@ -52,48 +49,35 @@ public class InterfazABMProveedor extends javax.swing.JPanel {
         {
             
         }
-   
-                
-
+    
     private boolean findInString(String word, String text)
     {
         return text.indexOf(word) > -1;
     }    
     
     
-    public static void main(String args[]) {
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            
-            public void run() {
-                new InterfazPrincipal().setVisible(true);
-            }
-        });
-    }
-    public ExpertoDistribucionPapelFilm getExpertoDistribucionPapelFilm() {
-        return experto;
-    }
-    public void setExpertoDistribucionPapelFilm(ExpertoDistribucionPapelFilm experto) {
-        this.experto = experto;
-    }
-    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jInternalFrame1 = new javax.swing.JInternalFrame();
+        ABMProveedor = new javax.swing.JInternalFrame();
         BotonModificar = new javax.swing.JButton();
         BotonEliminar = new javax.swing.JButton();
         BotonAgregar = new javax.swing.JButton();
-        jScrollPane4 = new javax.swing.JScrollPane();
-        TablaProveedor = new javax.swing.JTable();
-        jLabel3 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
+        CheckHabilitado = new javax.swing.JCheckBox();
         jLabel2 = new javax.swing.JLabel();
         TextoNombre = new javax.swing.JTextField();
-        CheckHabilitado = new javax.swing.JCheckBox();
+        jLabel3 = new javax.swing.JLabel();
         BotonBuscar = new javax.swing.JButton();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        TablaProveedor = new javax.swing.JTable();
 
-        jInternalFrame1.setVisible(true);
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        ABMProveedor.setResizable(true);
+        ABMProveedor.setTitle("ABMProveedor");
+        ABMProveedor.setVisible(true);
 
         BotonModificar.setText("Modificar");
         BotonModificar.setToolTipText("");
@@ -117,6 +101,26 @@ public class InterfazABMProveedor extends javax.swing.JPanel {
             }
         });
 
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
+        jLabel1.setText("Filtro");
+
+        CheckHabilitado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CheckHabilitadoActionPerformed(evt);
+            }
+        });
+
+        jLabel2.setText("Por Nombre:");
+
+        jLabel3.setText("Habilitado:");
+
+        BotonBuscar.setText("Buscar");
+        BotonBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotonBuscarActionPerformed(evt);
+            }
+        });
+
         TablaProveedor.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {},
@@ -130,99 +134,81 @@ public class InterfazABMProveedor extends javax.swing.JPanel {
         ));
         jScrollPane4.setViewportView(TablaProveedor);
 
-        jLabel3.setText("Habilitado:");
-
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
-        jLabel1.setText("Filtro");
-
-        jLabel2.setText("Por Nombre:");
-
-        CheckHabilitado.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CheckHabilitadoActionPerformed(evt);
-            }
-        });
-
-        BotonBuscar.setText("Buscar");
-        BotonBuscar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BotonBuscarActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jInternalFrame1Layout = new javax.swing.GroupLayout(jInternalFrame1.getContentPane());
-        jInternalFrame1.getContentPane().setLayout(jInternalFrame1Layout);
-        jInternalFrame1Layout.setHorizontalGroup(
-            jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jInternalFrame1Layout.createSequentialGroup()
+        javax.swing.GroupLayout ABMProveedorLayout = new javax.swing.GroupLayout(ABMProveedor.getContentPane());
+        ABMProveedor.getContentPane().setLayout(ABMProveedorLayout);
+        ABMProveedorLayout.setHorizontalGroup(
+            ABMProveedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(ABMProveedorLayout.createSequentialGroup()
                 .addGap(23, 23, 23)
-                .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(ABMProveedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(BotonModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addComponent(BotonEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(BotonAgregar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jInternalFrame1Layout.createSequentialGroup()
+                .addGroup(ABMProveedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(ABMProveedorLayout.createSequentialGroup()
                         .addGap(74, 74, 74)
                         .addComponent(jLabel1)
                         .addGap(64, 64, 64)
-                        .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(ABMProveedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2)
                             .addComponent(jLabel3))
                         .addGap(39, 39, 39)
-                        .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(ABMProveedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(CheckHabilitado)
-                            .addGroup(jInternalFrame1Layout.createSequentialGroup()
+                            .addGroup(ABMProveedorLayout.createSequentialGroup()
                                 .addComponent(TextoNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(34, 34, 34)
                                 .addComponent(BotonBuscar))))
-                    .addGroup(jInternalFrame1Layout.createSequentialGroup()
+                    .addGroup(ABMProveedorLayout.createSequentialGroup()
                         .addGap(48, 48, 48)
                         .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(81, Short.MAX_VALUE))
+                .addContainerGap(90, Short.MAX_VALUE))
         );
-        jInternalFrame1Layout.setVerticalGroup(
-            jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jInternalFrame1Layout.createSequentialGroup()
-                .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jInternalFrame1Layout.createSequentialGroup()
+        ABMProveedorLayout.setVerticalGroup(
+            ABMProveedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(ABMProveedorLayout.createSequentialGroup()
+                .addGroup(ABMProveedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(ABMProveedorLayout.createSequentialGroup()
                         .addGap(73, 73, 73)
-                        .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addGroup(ABMProveedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel2)
                             .addComponent(TextoNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jInternalFrame1Layout.createSequentialGroup()
+                    .addGroup(ABMProveedorLayout.createSequentialGroup()
                         .addGap(80, 80, 80)
                         .addComponent(BotonBuscar))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jInternalFrame1Layout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ABMProveedorLayout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jLabel1)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(ABMProveedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(CheckHabilitado)
                     .addComponent(jLabel3))
                 .addGap(41, 41, 41)
-                .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(jInternalFrame1Layout.createSequentialGroup()
+                .addGroup(ABMProveedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(ABMProveedorLayout.createSequentialGroup()
                         .addComponent(BotonModificar)
                         .addGap(47, 47, 47)
                         .addComponent(BotonEliminar)
                         .addGap(51, 51, 51)
                         .addComponent(BotonAgregar))
                     .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                .addContainerGap(115, Short.MAX_VALUE))
+                .addContainerGap(110, Short.MAX_VALUE))
         );
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jInternalFrame1)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(ABMProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jInternalFrame1)
-                .addGap(0, 0, 0))
+            .addComponent(ABMProveedor)
         );
+
+        pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void BotonModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonModificarActionPerformed
@@ -234,12 +220,10 @@ public class InterfazABMProveedor extends javax.swing.JPanel {
         dtoP.setCorreoDTOProveedor(modeloTabla.getValueAt(fila, 2).toString());
         dtoP.setDireccionDTOProveedor(modeloTabla.getValueAt(fila, 3).toString());
         dtoP.setTelefonoDTOProveedor(Integer.parseInt(modeloTabla.getValueAt(fila, 4).toString()));
-       
         InterfazProveedor newInterfaz = new InterfazProveedor(experto, this, dtoP);
         newInterfaz.setVisible(true);
         }
-        else { JOptionPane.showMessageDialog(null, "No ha seleccionado ningun Tipo Impuesto para modificar.");}
-                     
+        else { JOptionPane.showMessageDialog(null, "No ha seleccionado ningun Proveedor para modificar.");}
     }//GEN-LAST:event_BotonModificarActionPerformed
 
     private void BotonEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonEliminarActionPerformed
@@ -273,7 +257,7 @@ public class InterfazABMProveedor extends javax.swing.JPanel {
                 modeloTabla.addRow(Datos);
             }
         }
-        else{ JOptionPane.showMessageDialog(null, "No se ha seleccionado ningun Tipo Impuesto o el seleccionado esta ya Inhabilitado.");
+        else{ JOptionPane.showMessageDialog(null, "No se ha seleccionado ningun Proveedor o el seleccionado esta ya Inhabilitado.");
         }
     }//GEN-LAST:event_BotonEliminarActionPerformed
 
@@ -288,7 +272,7 @@ public class InterfazABMProveedor extends javax.swing.JPanel {
 
     private void BotonBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonBuscarActionPerformed
         // TODO add your handling code here:
-        String a = TextoNombre.getText();
+         String a = TextoNombre.getText();
         Boolean b = CheckHabilitado.isSelected();
         String []Datos = new String[6];
         List<DTOProveedor> dtoList = experto.BuscarProveedor(a,b);
@@ -309,8 +293,44 @@ public class InterfazABMProveedor extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_BotonBuscarActionPerformed
 
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(InterfazABMProveedor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(InterfazABMProveedor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(InterfazABMProveedor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(InterfazABMProveedor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+        //</editor-fold>
+
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new InterfazABMProveedor().setVisible(true);
+            }
+        });
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JInternalFrame ABMProveedor;
     private javax.swing.JButton BotonAgregar;
     private javax.swing.JButton BotonBuscar;
     private javax.swing.JButton BotonEliminar;
@@ -318,11 +338,9 @@ public class InterfazABMProveedor extends javax.swing.JPanel {
     private javax.swing.JCheckBox CheckHabilitado;
     private javax.swing.JTable TablaProveedor;
     private javax.swing.JTextField TextoNombre;
-    private javax.swing.JInternalFrame jInternalFrame1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane4;
     // End of variables declaration//GEN-END:variables
 }
-
