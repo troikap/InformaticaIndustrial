@@ -295,6 +295,7 @@ public class InterfazABMProveedor extends javax.swing.JFrame {
     private void BotonAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonAgregarActionPerformed
         InterfazProveedor nuevaProveedor = new InterfazProveedor(controlador, this);
         nuevaProveedor.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_BotonAgregarActionPerformed
 
     private void CheckHabilitadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CheckHabilitadoActionPerformed
@@ -309,6 +310,7 @@ public class InterfazABMProveedor extends javax.swing.JFrame {
     private void VolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VolverActionPerformed
         // TODO add your handling code here:
         this.setVisible(false);
+        pantallaPrincipal.setVisible(true);
     }//GEN-LAST:event_VolverActionPerformed
 
     /**

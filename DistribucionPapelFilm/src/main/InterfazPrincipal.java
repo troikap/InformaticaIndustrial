@@ -166,6 +166,7 @@ public class InterfazPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
         InterfazABMProveedor interfazProveedor1 = new InterfazABMProveedor(controlador, this);
         interfazProveedor1.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_ProveedorActionPerformed
 
     private void TipoArticuloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TipoArticuloActionPerformed
