@@ -10,11 +10,11 @@
             <generator class="uuid2"/>
         </id>
 
-        <property name="fechaEntregaOrdenProduccion" type="date">
+        <property name="fechaEntregaOrdenProduccion" type="string">
             <column name="fechaEntregaOrdenProduccion"/>
         </property>
 
-        <property name="fechaRecepcionOrdenProduccion" type="date">
+        <property name="fechaRecepcionOrdenProduccion" type="string">
             <column name="fechaRecepcionOrdenProduccion"/>
         </property>
         
@@ -27,7 +27,7 @@
             <one-to-many class="entidades.ProductoTerminado"/>
         </bag>
         
-        <bag name="ordenProduccionEstado" table="OrdenProduccionEstado" cascade="none" inverse="false">
+        <bag name="ordenProduccionEstadoList" table="OrdenProduccionEstado" cascade="none" inverse="false">
             <key column="OIDOrdenProduccion" not-null="false"/>
             <one-to-many class="entidades.OrdenProduccionEstado"/>
         </bag>

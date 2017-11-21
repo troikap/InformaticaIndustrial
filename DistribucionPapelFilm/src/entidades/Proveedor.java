@@ -10,7 +10,7 @@ package entidades;
  *
  * @author TroikaP
  */
-public class Proveedor {
+public class Proveedor extends Entidad {
     
     private int codigoProveedor;
     private String correoProveedor;
@@ -18,6 +18,9 @@ public class Proveedor {
     private String nombreProveedor;
     private int telefonoProveedor;
     private String fechaInhabilitacionProveedor;
+
+    public Proveedor() {
+    }
 
     public String getFechaInhabilitacionProveedor() {
         return fechaInhabilitacionProveedor;

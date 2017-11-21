@@ -13,7 +13,7 @@ import javax.swing.table.DefaultTableModel;
  */
 public class InterfazABMProveedor extends javax.swing.JFrame {
     DefaultTableModel modeloTabla;
-    private ExpertoDistribucionPapelFilm experto;
+    private ControladorDistribucionPapelFilm controlador;
     private List<String> listCombox;
     InterfazPrincipal pantallaPrincipal;
     
@@ -21,7 +21,7 @@ public class InterfazABMProveedor extends javax.swing.JFrame {
         initComponents();
     }
 
-    public InterfazABMProveedor(ExpertoDistribucionPapelFilm experto, InterfazPrincipal interfaz) {
+    public InterfazABMProveedor(ControladorDistribucionPapelFilm controlador, InterfazPrincipal interfaz) {
         initComponents();
         modeloTabla=new DefaultTableModel();
         modeloTabla.addColumn("Codigo");
@@ -31,7 +31,7 @@ public class InterfazABMProveedor extends javax.swing.JFrame {
         modeloTabla.addColumn("Direccion");
         modeloTabla.addColumn("Telefono");
         this.TablaProveedor.setModel(modeloTabla);
-        this.experto = experto;
+        this.controlador = controlador;
         this.pantallaPrincipal = interfaz;
     }
     private DefaultListModel modelList(List<String> listaString)
@@ -45,9 +45,27 @@ public class InterfazABMProveedor extends javax.swing.JFrame {
                 }
             return model;
         }
-    private void actualizarProveedor(List<DTOProveedor> dtoListProveedor)
+    private void actualizarProveedor()
         {
-            
+            String a = TextoNombre.getText();
+            Boolean b = CheckHabilitado.isSelected();
+            String []Datos = new String[6];
+            List<DTOProveedor> dtoList = controlador.BuscarProveedor(a,b);
+            for (int i = 0; i < TablaProveedor.getRowCount(); i++) 
+            {
+                modeloTabla.removeRow(i);
+                i-=1;
+            }
+            for(DTOProveedor dtotipo : dtoList)
+            {
+                Datos[0]= String.valueOf(dtotipo.getCodigoDTOProveedor());
+                Datos[1]=dtotipo.getNombreDTOProveedor();
+                Datos[2]=dtotipo.getFechaDTOProveedor();
+                Datos[3]=dtotipo.getCorreoDTOProveedor();
+                Datos[4]=dtotipo.getDireccionDTOProveedor();
+                Datos[5]= String.valueOf(dtotipo.getTelefonoDTOProveedor());
+                modeloTabla.addRow(Datos);
+            }
         }
     
     private boolean findInString(String word, String text)
@@ -72,6 +90,7 @@ public class InterfazABMProveedor extends javax.swing.JFrame {
         BotonBuscar = new javax.swing.JButton();
         jScrollPane4 = new javax.swing.JScrollPane();
         TablaProveedor = new javax.swing.JTable();
+        Volver = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -134,34 +153,44 @@ public class InterfazABMProveedor extends javax.swing.JFrame {
         ));
         jScrollPane4.setViewportView(TablaProveedor);
 
+        Volver.setText("Volver");
+        Volver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                VolverActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout ABMProveedorLayout = new javax.swing.GroupLayout(ABMProveedor.getContentPane());
         ABMProveedor.getContentPane().setLayout(ABMProveedorLayout);
         ABMProveedorLayout.setHorizontalGroup(
             ABMProveedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(ABMProveedorLayout.createSequentialGroup()
                 .addGap(23, 23, 23)
-                .addGroup(ABMProveedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(BotonModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                    .addComponent(BotonEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(BotonAgregar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGroup(ABMProveedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(ABMProveedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(Volver)
                     .addGroup(ABMProveedorLayout.createSequentialGroup()
-                        .addGap(74, 74, 74)
-                        .addComponent(jLabel1)
-                        .addGap(64, 64, 64)
+                        .addGroup(ABMProveedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(BotonModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                            .addComponent(BotonEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(BotonAgregar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGroup(ABMProveedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel3))
-                        .addGap(39, 39, 39)
-                        .addGroup(ABMProveedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(CheckHabilitado)
                             .addGroup(ABMProveedorLayout.createSequentialGroup()
-                                .addComponent(TextoNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(34, 34, 34)
-                                .addComponent(BotonBuscar))))
-                    .addGroup(ABMProveedorLayout.createSequentialGroup()
-                        .addGap(48, 48, 48)
-                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(74, 74, 74)
+                                .addComponent(jLabel1)
+                                .addGap(64, 64, 64)
+                                .addGroup(ABMProveedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel2)
+                                    .addComponent(jLabel3))
+                                .addGap(39, 39, 39)
+                                .addGroup(ABMProveedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(CheckHabilitado)
+                                    .addGroup(ABMProveedorLayout.createSequentialGroup()
+                                        .addComponent(TextoNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(34, 34, 34)
+                                        .addComponent(BotonBuscar))))
+                            .addGroup(ABMProveedorLayout.createSequentialGroup()
+                                .addGap(48, 48, 48)
+                                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap(90, Short.MAX_VALUE))
         );
         ABMProveedorLayout.setVerticalGroup(
@@ -192,7 +221,9 @@ public class InterfazABMProveedor extends javax.swing.JFrame {
                         .addGap(51, 51, 51)
                         .addComponent(BotonAgregar))
                     .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                .addContainerGap(110, Short.MAX_VALUE))
+                .addGap(32, 32, 32)
+                .addComponent(Volver)
+                .addContainerGap(59, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -220,7 +251,7 @@ public class InterfazABMProveedor extends javax.swing.JFrame {
         dtoP.setCorreoDTOProveedor(modeloTabla.getValueAt(fila, 2).toString());
         dtoP.setDireccionDTOProveedor(modeloTabla.getValueAt(fila, 3).toString());
         dtoP.setTelefonoDTOProveedor(Integer.parseInt(modeloTabla.getValueAt(fila, 4).toString()));
-        InterfazProveedor newInterfaz = new InterfazProveedor(experto, this, dtoP);
+        InterfazProveedor newInterfaz = new InterfazProveedor(controlador, this, dtoP);
         newInterfaz.setVisible(true);
         }
         else { JOptionPane.showMessageDialog(null, "No ha seleccionado ningun Proveedor para modificar.");}
@@ -234,12 +265,12 @@ public class InterfazABMProveedor extends javax.swing.JFrame {
             DTOEliminado.setCodigoDTOProveedor(Integer.parseInt(modeloTabla.getValueAt(filaSeleccionada, 0).toString()));
             DTOEliminado.setNombreDTOProveedor(modeloTabla.getValueAt(filaSeleccionada, 1).toString());
             modeloTabla.removeRow(filaSeleccionada);
-            this.experto.EliminarProveedor(DTOEliminado);
+            this.controlador.EliminarProveedor(DTOEliminado);
             String a = TextoNombre.getText();
             Boolean b = CheckHabilitado.isSelected();
             String []Datos = new String[3];
 
-            List<DTOProveedor> dtoList = experto.BuscarProveedor(a,b);
+            List<DTOProveedor> dtoList = controlador.BuscarProveedor(a,b);
 
             for (int i = 0; i < TablaProveedor.getRowCount(); i++) {
                 modeloTabla.removeRow(i);
@@ -262,7 +293,7 @@ public class InterfazABMProveedor extends javax.swing.JFrame {
     }//GEN-LAST:event_BotonEliminarActionPerformed
 
     private void BotonAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonAgregarActionPerformed
-        InterfazProveedor nuevaProveedor = new InterfazProveedor(experto, this);
+        InterfazProveedor nuevaProveedor = new InterfazProveedor(controlador, this);
         nuevaProveedor.setVisible(true);
     }//GEN-LAST:event_BotonAgregarActionPerformed
 
@@ -272,26 +303,13 @@ public class InterfazABMProveedor extends javax.swing.JFrame {
 
     private void BotonBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonBuscarActionPerformed
         // TODO add your handling code here:
-         String a = TextoNombre.getText();
-        Boolean b = CheckHabilitado.isSelected();
-        String []Datos = new String[6];
-        List<DTOProveedor> dtoList = experto.BuscarProveedor(a,b);
-        for (int i = 0; i < TablaProveedor.getRowCount(); i++) 
-        {
-            modeloTabla.removeRow(i);
-            i-=1;
-        }
-        for(DTOProveedor dtotipo : dtoList)
-        {
-            Datos[0]= String.valueOf(dtotipo.getCodigoDTOProveedor());
-            Datos[1]=dtotipo.getNombreDTOProveedor();
-            Datos[2]=dtotipo.getFechaDTOProveedor();
-            Datos[3]=dtotipo.getCorreoDTOProveedor();
-            Datos[4]=dtotipo.getDireccionDTOProveedor();
-            Datos[5]= String.valueOf(dtotipo.getTelefonoDTOProveedor());
-            modeloTabla.addRow(Datos);
-        }
+        actualizarProveedor();
     }//GEN-LAST:event_BotonBuscarActionPerformed
+
+    private void VolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VolverActionPerformed
+        // TODO add your handling code here:
+        this.setVisible(false);
+    }//GEN-LAST:event_VolverActionPerformed
 
     /**
      * @param args the command line arguments
@@ -338,6 +356,7 @@ public class InterfazABMProveedor extends javax.swing.JFrame {
     private javax.swing.JCheckBox CheckHabilitado;
     private javax.swing.JTable TablaProveedor;
     private javax.swing.JTextField TextoNombre;
+    private javax.swing.JButton Volver;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

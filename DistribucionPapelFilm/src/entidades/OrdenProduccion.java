@@ -1,46 +1,50 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package entidades;
 
-import java.util.Date;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
  *
  * @author TroikaP
  */
-public class OrdenProduccion {
+public class OrdenProduccion extends Entidad {
     
-    private Date fechaEntregaOrdenProduccion;
-    private Date fechaRecepcionOrdenProduccion;
+    private String fechaEntregaOrdenProduccion;
+    private String fechaRecepcionOrdenProduccion;
     private int numeroOrdenProduccion;
     private ProductoTerminado productoTerminado;
-    private List<OrdenProduccionEstado> listaOrdenProduccionEstado;
+    private List<OrdenProduccionEstado> ordenProduccionEstadoList = new ArrayList<>();
 
-    public List<OrdenProduccionEstado> getListaOrdenProduccionEstado() {
-        return listaOrdenProduccionEstado;
+    public OrdenProduccion() {
     }
 
-    public void setListaOrdenProduccionEstado(List<OrdenProduccionEstado> listaOrdenProduccionEstado) {
-        this.listaOrdenProduccionEstado = listaOrdenProduccionEstado;
+    public List<OrdenProduccionEstado> getOrdenProduccionEstadoList() {
+        return ordenProduccionEstadoList;
     }
 
-    public Date getFechaEntregaOrdenProduccion() {
+    public void setOrdenProduccionEstadoList(List<OrdenProduccionEstado> listaOrdenProduccionEstado) {
+        this.ordenProduccionEstadoList = listaOrdenProduccionEstado;
+    }
+
+    public void addOrdenProduccionEstadoList (OrdenProduccionEstado ordenProduccionEstado)
+    {
+        ordenProduccionEstadoList.add(ordenProduccionEstado);
+    }
+    
+    public String getFechaEntregaOrdenProduccion() {
         return fechaEntregaOrdenProduccion;
     }
 
-    public void setFechaEntregaOrdenProduccion(Date fechaEntregaOrdenProduccion) {
+    public void setFechaEntregaOrdenProduccion(String fechaEntregaOrdenProduccion) {
         this.fechaEntregaOrdenProduccion = fechaEntregaOrdenProduccion;
     }
 
-    public Date getFechaRecepcionOrdenProduccion() {
+    public String getFechaRecepcionOrdenProduccion() {
         return fechaRecepcionOrdenProduccion;
     }
 
-    public void setFechaRecepcionOrdenProduccion(Date fechaRecepcionOrdenProduccion) {
+    public void setFechaRecepcionOrdenProduccion(String fechaRecepcionOrdenProduccion) {
         this.fechaRecepcionOrdenProduccion = fechaRecepcionOrdenProduccion;
     }
 

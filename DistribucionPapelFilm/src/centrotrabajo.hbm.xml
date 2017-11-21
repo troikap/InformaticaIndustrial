@@ -26,7 +26,7 @@
             <column name="tipoDeUnidadCentroTrabajo"/>
         </property>
         
-        <bag name="maquinaHerramienta" table="MaquinaHerramienta" cascade="none" inverse="false">
+        <bag name="maquinaHerramientaList" table="MaquinaHerramienta" cascade="none" inverse="false">
             <key column="OIDCentroTrabajo" not-null="false"/>
             <one-to-many class="entidades.MaquinaHerramienta"/>
         </bag>

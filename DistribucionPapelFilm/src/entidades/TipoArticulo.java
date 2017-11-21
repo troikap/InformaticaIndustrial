@@ -1,18 +1,27 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package entidades;
 
 /**
  *
  * @author TroikaP
  */
-public class TipoArticulo {
+public class TipoArticulo extends Entidad {
     
     private int codigoTipoArticulo;
     private String nombreTipoArticulo;
+    private String fechaInhabilitacionTipoArticulo;
+
+    public TipoArticulo(){
+        
+    }
+    
+    public String getFechaInhabilitacionTipoArticulo() {
+        return fechaInhabilitacionTipoArticulo;
+    }
+
+    public void setFechaInhabilitacionTipoArticulo(String fechaInhabilitacionTipoArticulo) {
+        this.fechaInhabilitacionTipoArticulo = fechaInhabilitacionTipoArticulo;
+    }
 
     public int getCodigoTipoArticulo() {
         return codigoTipoArticulo;

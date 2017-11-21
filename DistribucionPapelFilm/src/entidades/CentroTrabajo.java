@@ -1,23 +1,32 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package entidades;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
  *
  * @author TroikaP
  */
-public class CentroTrabajo {
+public class CentroTrabajo extends Entidad {
     
     private int codigoCentroTrabajo;
     private String nombreCentroTrabajo;
     private float tiempoPorUnidadCentroTrabajo;
     private String tipoDeUnidadCentroTrabajo;
-    private List<MaquinaHerramienta> listaMaquinaHerramienta;
+    private String fechaInhabilitacionCentroTrabajo;
+    private List<MaquinaHerramienta> maquinaHerramientaList = new ArrayList<>();
+
+    public CentroTrabajo() {
+    }
+
+    public String getFechaInhabilitacionCentroTrabajo() {
+        return fechaInhabilitacionCentroTrabajo;
+    }
+
+    public void setFechaInhabilitacionCentroTrabajo(String fechaInhabilitacionCentroTrabajo) {
+        this.fechaInhabilitacionCentroTrabajo = fechaInhabilitacionCentroTrabajo;
+    }
 
     public int getCodigoCentroTrabajo() {
         return codigoCentroTrabajo;
@@ -51,12 +60,17 @@ public class CentroTrabajo {
         this.tipoDeUnidadCentroTrabajo = tipoDeUnidadCentroTrabajo;
     }
 
-    public List<MaquinaHerramienta> getListaMaquinaHerramienta() {
-        return listaMaquinaHerramienta;
+    public List<MaquinaHerramienta> getMaquinaHerramientaList() {
+        return maquinaHerramientaList;
     }
 
-    public void setListaMaquinaHerramienta(List<MaquinaHerramienta> listaMaquinaHerramienta) {
-        this.listaMaquinaHerramienta = listaMaquinaHerramienta;
+    public void setMaquinaHerramientaList(List<MaquinaHerramienta> listaMaquinaHerramienta) {
+        this.maquinaHerramientaList = listaMaquinaHerramienta;
+    }
+    
+    public void addMaquinaHerramientaList (MaquinaHerramienta numeracionAtributo)
+    {
+        maquinaHerramientaList.add(numeracionAtributo);
     }
     
 }

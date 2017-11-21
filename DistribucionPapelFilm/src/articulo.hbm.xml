@@ -18,7 +18,7 @@
             <column name="descripccionArticulo"/>
         </property>
         
-        <property name="fechaInhabilitacionArticulo" type="date">
+        <property name="fechaInhabilitacionArticulo" type="string">
             <column name="fechaInhabilitacionArticulo"/>
         </property>
         
@@ -30,7 +30,7 @@
             <column name="OIDProveedor"/>
         </many-to-one>
         
-        <many-to-one name="TipoArticulo" class="entidades.TipoArticulo" not-null="true">
+        <many-to-one name="tipoArticulo" class="entidades.TipoArticulo" not-null="true">
             <column name="OIDTipoArticulo"/>
         </many-to-one>
         

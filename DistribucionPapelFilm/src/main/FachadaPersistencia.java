@@ -23,6 +23,7 @@ public class FachadaPersistencia
     public List<Object> buscar (String claseABuscar, List<DTOCriterio> criterioList)
     {
         return FachadaInterna.getInstance().buscar(claseABuscar, criterioList);
+        
     }
 
     public void guardar (Object objeto)

@@ -1,31 +1,36 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package entidades;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
  *
  * @author TroikaP
  */
-public class RutaFabricacion {
+public class RutaFabricacion extends Entidad {
     
     private int numeroRutaFabricacion;
-    private List<DetalleRutaFabricacion> listaDetalleRutaFabricacion;
+    private List<DetalleRutaFabricacion> detalleRutaFabricacionList = new ArrayList<>();
+
+    public RutaFabricacion() {
+    }
+
+    public List<DetalleRutaFabricacion> getDetalleRutaFabricacionList() {
+        return detalleRutaFabricacionList;
+    }
+
+    public void setDetalleRutaFabricacionList(List<DetalleRutaFabricacion> detalleRutaFabricacionList) {
+        this.detalleRutaFabricacionList = detalleRutaFabricacionList;
+    }
+    
+    public void addDetalleRutaFabricacionList (DetalleRutaFabricacion detalleRutaFabricacion)
+    {
+        detalleRutaFabricacionList.add(detalleRutaFabricacion);
+    }
 
     public int getNumeroRutaFabricacion() {
         return numeroRutaFabricacion;
-    }
-
-    public List<DetalleRutaFabricacion> getListaDetalleRutaFabricacion() {
-        return listaDetalleRutaFabricacion;
-    }
-
-    public void setListaDetalleRutaFabricacion(List<DetalleRutaFabricacion> listaDetalleRutaFabricacion) {
-        this.listaDetalleRutaFabricacion = listaDetalleRutaFabricacion;
     }
 
     public void setNumeroRutaFabricacion(int numeroRutaFabricacion) {

@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package entidades;
 
 import java.util.Date;
@@ -11,7 +7,7 @@ import java.util.Date;
  *
  * @author TroikaP
  */
-public class Articulo {
+public class Articulo extends Entidad {
     
     private int codigoArticulo;
     private String descripccionArticulo;
@@ -19,6 +15,9 @@ public class Articulo {
     private String nombreArticulo;
     private Proveedor proveedor;
     private TipoArticulo tipoArticulo;
+
+    public Articulo() {
+    }
 
     public int getCodigoArticulo() {
         return codigoArticulo;

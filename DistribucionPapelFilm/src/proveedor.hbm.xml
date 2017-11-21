@@ -30,6 +30,10 @@
             <column name="telefonoProveedor"/>
         </property>
         
+        <property name="fechaInhabilitacionProveedor" type="string">
+            <column name="fechaInhabilitacionProveedor"/>
+        </property>
+        
     </class>
     
 </hibernate-mapping>

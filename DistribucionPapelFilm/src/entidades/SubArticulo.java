@@ -1,25 +1,22 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package entidades;
 
-import java.util.Date;
+package entidades;
 
 /**
  *
  * @author TroikaP
  */
-public class SubArticulo {
+public class SubArticulo extends Entidad {
     
     private int codigoSubArticulo;
     private float costoSubArticulo;
     private String descripcionSubArticulo;
-    private Date fechaInhabilitacionSubArticulo;
+    private String fechaInhabilitacionSubArticulo;
     private String nombreSubArticulo;
     private int stockSubArticulo;
     private Articulo articulo;
+
+    public SubArticulo() {
+    }
 
     public int getCodigoSubArticulo() {
         return codigoSubArticulo;
@@ -45,11 +42,11 @@ public class SubArticulo {
         this.descripcionSubArticulo = descripcionSubArticulo;
     }
 
-    public Date getFechaInhabilitacionSubArticulo() {
+    public String getFechaInhabilitacionSubArticulo() {
         return fechaInhabilitacionSubArticulo;
     }
 
-    public void setFechaInhabilitacionSubArticulo(Date fechaInhabilitacionSubArticulo) {
+    public void setFechaInhabilitacionSubArticulo(String fechaInhabilitacionSubArticulo) {
         this.fechaInhabilitacionSubArticulo = fechaInhabilitacionSubArticulo;
     }
 

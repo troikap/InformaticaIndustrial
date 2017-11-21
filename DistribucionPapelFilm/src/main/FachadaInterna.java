@@ -33,6 +33,7 @@ public class FachadaInterna
         {
             System.out.println("Error creating criteria. " + e);
         }
+        
         if (criterioList != null)
         {
             for (DTOCriterio criterio : criterioList)
@@ -103,9 +104,9 @@ public class FachadaInterna
             }
         }
        
-
+            
         return cr.list();
-
+        
     }
 
     public void guardar (Object objeto)

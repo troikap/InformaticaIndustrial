@@ -18,6 +18,10 @@
             <column name="nombreTipoArticulo"/>
         </property>
         
+        <property name="fechaInhabilitacionTipoArticulo" type="string">
+            <column name="fechaInhabilitacionTipoArticulo"/>
+        </property>
+        
     </class>
     
 </hibernate-mapping>

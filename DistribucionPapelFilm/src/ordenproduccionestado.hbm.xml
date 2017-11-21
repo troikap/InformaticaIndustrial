@@ -10,7 +10,7 @@
             <generator class="uuid2"/>
         </id>
 
-        <property name="fechaOrdenProduccionEstado" type="date">
+        <property name="fechaOrdenProduccionEstado" type="string">
             <column name="fechaOrdenProduccionEstado"/>
         </property>
 
@@ -22,7 +22,7 @@
             <column name="OIDEstadoOrdenProduccion"/>
         </many-to-one>
         
-        <bag name="subArticulo" table="SubArticulo" cascade="none" inverse="false">
+        <bag name="subArticuloList" table="SubArticulo" cascade="none" inverse="false">
             <key column="OIDOrdenProduccionEstado" not-null="false"/>
             <one-to-many class="entidades.SubArticulo"/>
         </bag>

@@ -9,9 +9,12 @@ package entidades;
  *
  * @author TroikaP
  */
-public class ProductoProcesoElaboracion {
+public class ProductoProcesoElaboracion extends Entidad {
     
     private int codigoProductoProcesoElaboracion;
+
+    public ProductoProcesoElaboracion() {
+    }
 
     public int getCodigoProductoProcesoElaboracion() {
         return codigoProductoProcesoElaboracion;

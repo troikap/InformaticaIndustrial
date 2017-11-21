@@ -3,7 +3,7 @@
 
 <hibernate-mapping>
 
-    <class name="entidades.ArticuloProdcuto" table="articuloproducto">
+    <class name="entidades.ArticuloProducto" table="articuloproducto">
 
         <id name="OID" type="string">
             <column name="OIDArticuloProducto"/>
@@ -14,7 +14,7 @@
             <column name="cantidadFabricacion"/>
         </property>
 
-        <many-to-one name="subarticulo" class="entidades.SubArticulo" not-null="true">
+        <many-to-one name="subArticulo" class="entidades.SubArticulo" not-null="true">
             <column name="OIDSubArticulo"/>
         </many-to-one>
         

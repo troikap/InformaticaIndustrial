@@ -22,7 +22,7 @@
             <column name="descripcionSubArticulo"/>
         </property>
         
-        <property name="fechaInhabilitacionSubArticulo" type="date">
+        <property name="fechaInhabilitacionSubArticulo" type="string">
             <column name="fechaInhabilitacionSubArticulo"/>
         </property>
         

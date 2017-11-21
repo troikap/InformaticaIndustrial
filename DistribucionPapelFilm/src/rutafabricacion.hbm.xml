@@ -14,7 +14,7 @@
             <column name="nombreRutaFabricacion"/>
         </property>
 
-        <bag name="detalleRutaFabricacion" table="DetalleRutaFabricacion" cascade="none" inverse="false">
+        <bag name="detalleRutaFabricacionList" table="DetalleRutaFabricacion" cascade="none" inverse="false">
             <key column="OIDRutaFabricacion" not-null="false"/>
             <one-to-many class="entidades.DetalleRutaFabricacion"/>
         </bag>

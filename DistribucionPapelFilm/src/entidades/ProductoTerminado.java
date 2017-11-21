@@ -5,33 +5,52 @@
  */
 package entidades;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
  *
  * @author TroikaP
  */
-public class ProductoTerminado {
+public class ProductoTerminado extends Entidad {
     
     private int codigoProductoTerminado;
     private float costoProductoTerminado;
     private String nombreProductoTerminado;
     private int stockProductoTerminado;
-    private List<ArticuloProducto> listaArticuloProducto;
+    private String fechaInhabilitacionProductoTerminado;
+    private List<ArticuloProducto> articuloProductoList = new ArrayList<>();
     private RutaFabricacion rutaFabricacion;
 
+    public ProductoTerminado() {
+    }
+
+    
+    public String getFechaInhabilitacionProductoTerminado() {
+        return fechaInhabilitacionProductoTerminado;
+    }
+
+    public void setFechaInhabilitacionProductoTerminado(String fechaInhabilitacionProductoTerminado) {
+        this.fechaInhabilitacionProductoTerminado = fechaInhabilitacionProductoTerminado;
+    }
+    
     public int getCodigoProductoTerminado() {
         return codigoProductoTerminado;
     }
 
-    public List<ArticuloProducto> getListaArticuloProducto() {
-        return listaArticuloProducto;
+    public List<ArticuloProducto> getArticuloProductoList() {
+        return articuloProductoList;
     }
 
-    public void setListaArticuloProducto(List<ArticuloProducto> listaArticuloProducto) {
-        this.listaArticuloProducto = listaArticuloProducto;
+    public void setArticuloProductoList(List<ArticuloProducto> ArticuloProductoList) {
+        this.articuloProductoList = ArticuloProductoList;
     }
 
+    public void addArticuloProductoList (ArticuloProducto articuloProducto)
+    {
+        articuloProductoList.add(articuloProducto);
+    }
+    
     public void setCodigoProductoTerminado(int codigoProductoTerminado) {
         this.codigoProductoTerminado = codigoProductoTerminado;
     }

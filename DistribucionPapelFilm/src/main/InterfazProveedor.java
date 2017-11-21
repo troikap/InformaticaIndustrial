@@ -4,6 +4,7 @@ package main;
 import dto.DTOProveedor;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import static org.hibernate.jpa.criteria.ValueHandlerFactory.isNumeric;
 
 /**
  *
@@ -12,23 +13,23 @@ import javax.swing.table.DefaultTableModel;
 public class InterfazProveedor extends javax.swing.JFrame {
 
     //private boolean Agregar;
-    private ExpertoDistribucionPapelFilm experto;
+    private ControladorDistribucionPapelFilm controlador;
     private InterfazABMProveedor pantallaSecundaria;
     public InterfazProveedor() {
         initComponents();
     }
     
-    public InterfazProveedor(ExpertoDistribucionPapelFilm experto, InterfazABMProveedor interfaz) {
+    public InterfazProveedor(ControladorDistribucionPapelFilm controlador, InterfazABMProveedor interfaz) {
         initComponents();
         //this.Agregar = false;
-        this.experto = experto;
+        this.controlador = controlador;
         this.pantallaSecundaria = interfaz;
     }
         
-    public InterfazProveedor(ExpertoDistribucionPapelFilm experto, InterfazABMProveedor interfaz, DTOProveedor dtoP) {
+    public InterfazProveedor(ControladorDistribucionPapelFilm controlador, InterfazABMProveedor interfaz, DTOProveedor dtoP) {
         initComponents();
         //this.Agregar = false;
-        this.experto = experto;
+        this.controlador = controlador;
         this.pantallaSecundaria = interfaz;
         TextoCodigo.setText(String.valueOf(dtoP.getCodigoDTOProveedor()));
         TextoNombre.setText(dtoP.getNombreDTOProveedor());
@@ -188,13 +189,13 @@ public class InterfazProveedor extends javax.swing.JFrame {
         if (TextoCodigo.getText()!=null && !TextoCodigo.getText().trim().isEmpty() && TextoNombre.getText()!=null && !TextoNombre.getText().trim().isEmpty() && TextoCorreo.getText()!=null && !TextoCorreo.getText().trim().isEmpty() && TextoDireccion.getText()!=null && !TextoDireccion.getText().trim().isEmpty() && TextoTelefono.getText()!=null && !TextoTelefono.getText().trim().isEmpty())
             {
                 DTOProveedor dtoNuevo = new DTOProveedor();
-                dtoNuevo.setCodigoDTOProveedor(Integer.parseInt(TextoNombre.getText()));
+                dtoNuevo.setCodigoDTOProveedor(Integer.parseInt(TextoCodigo.getText()));
                 dtoNuevo.setNombreDTOProveedor(TextoNombre.getText());
-                dtoNuevo.setCorreoDTOProveedor(TextoNombre.getText());
-                dtoNuevo.setDireccionDTOProveedor(TextoNombre.getText());
-                dtoNuevo.setTelefonoDTOProveedor(Integer.parseInt(TextoNombre.getText()));
+                dtoNuevo.setCorreoDTOProveedor(TextoCorreo.getText());
+                dtoNuevo.setDireccionDTOProveedor(TextoDireccion.getText());
+                dtoNuevo.setTelefonoDTOProveedor(Integer.parseInt(TextoTelefono.getText()));
                 
-                experto.GuardarProveedor(dtoNuevo);
+                controlador.GuardarProveedor(dtoNuevo);
                 this.setVisible(false);
             }
             else{ JOptionPane.showMessageDialog(null, "Esta vacio algun campo.");

@@ -4,7 +4,7 @@
   <session-factory>
     <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
     <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
-    <property name="hibernate.connection.url">jdbc:mysql://localhost/DistribucionPapelFilm</property>
+    <property name="hibernate.connection.url">jdbc:mysql://localhost/distribucionpapelfilm</property>
     <property name="hibernate.connection.username">root</property>
     <property name="hibernate.current_session_context_class">thread</property>
     <property name="hibernate.show_sql">true</property>
@@ -14,8 +14,19 @@
     <property name="hibernate.c3p0.max_statements">50</property>
     <property name="hibernate.c3p0.idle_test_period">3000</property>
     <!--Clases a mapear-->
-    <mapping resource="tipoimpuesto.hbm.xml"/>
-    <mapping resource="atributoadicional.hbm.xml"/>
-    <mapping resource="numeracionatributo.hbm.xml"/>
+    <mapping resource="proveedor.hbm.xml"/>
+    <mapping resource="tipoarticulo.hbm.xml"/>
+    <mapping resource="articulo.hbm.xml"/>
+    <mapping resource="estadoordenproduccion.hbm.xml"/>
+    <mapping resource="productoprocesoelaboracion.hbm.xml"/>
+    <mapping resource="centrotrabajo.hbm.xml"/>
+    <mapping resource="maquinaherramienta.hbm.xml"/>
+    <mapping resource="rutafabricacion.hbm.xml"/>
+    <mapping resource="productoterminado.hbm.xml"/>
+    <mapping resource="ordenproduccion.hbm.xml"/>
+    <mapping resource="ordenproduccionestado.hbm.xml"/>
+    <mapping resource="subarticulo.hbm.xml"/>
+    <mapping resource="articuloproducto.hbm.xml"/>
+    <mapping resource="detallerutafabricacion.hbm.xml"/>
   </session-factory>
 </hibernate-configuration>

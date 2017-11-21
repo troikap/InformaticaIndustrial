@@ -1,6 +1,9 @@
 
 package main;
-
+import dto.*;
+import java.util.List;
+import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -8,13 +11,13 @@ import javax.swing.table.DefaultTableModel;
  * @author TroikaP
  */
 public class InterfazPrincipal extends javax.swing.JFrame {
-    private ExpertoDistribucionPapelFilm experto;
+    private ControladorDistribucionPapelFilm controlador;
     /**
      * Creates new form InterfazPricipal
      */
-    public InterfazPrincipal(ExpertoDistribucionPapelFilm experto) {
+    public InterfazPrincipal(ControladorDistribucionPapelFilm controlador) {
         initComponents();
-        this.experto = experto;
+        this.controlador = controlador;
     }
     
     public InterfazPrincipal() {
@@ -161,9 +164,8 @@ public class InterfazPrincipal extends javax.swing.JFrame {
 
     private void ProveedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ProveedorActionPerformed
         // TODO add your handling code here:
-        InterfazABMProveedor interfazProveedor1 = new InterfazABMProveedor(experto, this);
+        InterfazABMProveedor interfazProveedor1 = new InterfazABMProveedor(controlador, this);
         interfazProveedor1.setVisible(true);
-        System.out.print("Creando la 2da");
     }//GEN-LAST:event_ProveedorActionPerformed
 
     private void TipoArticuloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TipoArticuloActionPerformed
@@ -246,13 +248,12 @@ public class InterfazPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton TipoArticulo;
     private javax.swing.JInternalFrame jInternalFrame1;
     // End of variables declaration//GEN-END:variables
-public ExpertoDistribucionPapelFilm getExpertoDistribucionPapelFilm() {
-        return experto;
+public ControladorDistribucionPapelFilm getControladorDistribucionPapelFilm() {
+        return controlador;
     }
 
-    
-    public void setExpertoDistribucionPapelFilm(ExpertoDistribucionPapelFilm experto) {
-        this.experto = experto;
+    public void setControladorDistribucionPapelFilm(ControladorDistribucionPapelFilm controlador) {
+        this.controlador = controlador;
     }
 
 }

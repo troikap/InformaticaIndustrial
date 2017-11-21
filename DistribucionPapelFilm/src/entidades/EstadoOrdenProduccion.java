@@ -9,10 +9,22 @@ package entidades;
  *
  * @author TroikaP
  */
-public class EstadoOrdenProduccion {
+public class EstadoOrdenProduccion extends Entidad {
     
     private String nombreEstadoOrdenProduccion;
     private int codigoEstadoOrdenProduccion;
+    private String fechaInhabilitacionEstadoOrdenProduccion;
+
+    public EstadoOrdenProduccion() {
+    }
+
+    public String getFechaInhabilitacionEstadoOrdenProduccion() {
+        return fechaInhabilitacionEstadoOrdenProduccion;
+    }
+
+    public void setFechaInhabilitacionEstadoOrdenProduccion(String fechaInhabilitacionEstadoOrdenProduccion) {
+        this.fechaInhabilitacionEstadoOrdenProduccion = fechaInhabilitacionEstadoOrdenProduccion;
+    }
 
     public int getCodigoEstadoOrdenProduccion() {
         return codigoEstadoOrdenProduccion;

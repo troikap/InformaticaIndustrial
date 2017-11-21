@@ -26,7 +26,7 @@
             <column name="stockProductoTerminado"/>
         </property>
         
-        <bag name="articuloProducto" table="ArticuloProducto" cascade="none" inverse="false">
+        <bag name="articuloProductoList" table="ArticuloProducto" cascade="none" inverse="false">
             <key column="OIDProductoTerminado" not-null="false"/>
             <one-to-many class="entidades.ArticuloProducto"/>
         </bag>
