@@ -113,6 +113,11 @@ public class FachadaInterna
     {
         HibernateUtil.getSession().saveOrUpdate(objeto);
     }
+    
+    public void actualizar (String OID, Object objeto)
+    {
+        HibernateUtil.getSession().saveOrUpdate(OID, objeto);
+    }
 
     public void iniciarTransaccion ()
     {

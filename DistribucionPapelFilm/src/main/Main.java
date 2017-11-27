@@ -1,12 +1,19 @@
 package main;
+import main.ControladorDistribucionPapelFilm;
+import main.InterfazPrincipal;
+
+
 
 public class Main
 {
 
     public static void main (String[] args)
     {
-        Controlador controlador = new Controlador();
-        InterfazABM interfaz= new InterfazABM(controlador);
+        //Controlador controlador = new Controlador();
+        //InterfazABM interfaz= new InterfazABM(controlador);
+        //interfaz.setVisible(true);
+        ControladorDistribucionPapelFilm controlador = new ControladorDistribucionPapelFilm();
+        InterfazPrincipal interfaz= new InterfazPrincipal(controlador);
         interfaz.setVisible(true);
         
     }

@@ -19,19 +19,35 @@ public class DecoradorDistribucionPapelFilm extends ExpertoDistribucionPapelFilm
         FachadaInterna.getInstance().finalizarTransaccion();
         return lista;
     }
-    
     public void EliminarProveedor(DTOProveedor a) 
     {
-        
         FachadaInterna.getInstance().iniciarTransaccion();
         super.EliminarProveedor(a);
         FachadaInterna.getInstance().finalizarTransaccion();
     }
-    
-    public void GuardarProveedor(DTOProveedor dtoProv)
+    public void GuardarProveedor(DTOProveedor dto, boolean Agregar)
     {
         FachadaInterna.getInstance().iniciarTransaccion();
-        super.GuardarProveedor(dtoProv);
+        super.GuardarProveedor(dto, Agregar);
+        FachadaInterna.getInstance().finalizarTransaccion();
+    }
+    public List<DTOTipoArticulo> BuscarTipoArticulo (String a, boolean b) 
+    {
+        FachadaInterna.getInstance().iniciarTransaccion();
+        List<DTOTipoArticulo> lista = super.BuscarTipoArticulo(a, b);
+        FachadaInterna.getInstance().finalizarTransaccion();
+        return lista;
+    }
+    public void EliminarTipoArticulo(DTOTipoArticulo a) 
+    {
+        FachadaInterna.getInstance().iniciarTransaccion();
+        super.EliminarTipoArticulo(a);
+        FachadaInterna.getInstance().finalizarTransaccion();
+    }
+    public void GuardarTipoArticulo(DTOTipoArticulo dto, boolean Agregar)
+    {
+        FachadaInterna.getInstance().iniciarTransaccion();
+        super.GuardarTipoArticulo(dto, Agregar);
         FachadaInterna.getInstance().finalizarTransaccion();
     }
 } 

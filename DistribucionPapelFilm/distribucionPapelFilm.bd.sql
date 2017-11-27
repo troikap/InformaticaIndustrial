@@ -10,6 +10,8 @@ CREATE TABLE `proveedor` (
 			`direccionProveedor` varchar(36) NOT NULL,
   			`telefonoProveedor` int(10) NULL,
 			`fechaInhabilitacionProveedor` varchar(10) NULL,
+			UNIQUE (OIDProveedor),
+			UNIQUE (codigoProveedor),
   			
 			PRIMARY KEY (`OIDProveedor`)
 			) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -24,6 +26,8 @@ CREATE TABLE `tipoarticulo` (
   			`codigoTipoArticulo` int(10) NOT NULL,
   			`nombreTipoArticulo` varchar(36) NOT NULL,
 			`fechaInhabilitacionTipoArticulo` varchar(10) NULL,
+			UNIQUE (OIDTipoArticulo),
+			UNIQUE (codigoTipoArticulo),
   			
 			PRIMARY KEY (`OIDTipoArticulo`)
 			) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -41,6 +45,8 @@ CREATE TABLE `articulo` (
   			`fechaInhabilitacionArticulo` varchar(10) NULL,
 			`OIDProveedor` varchar(36) NOT NULL,
   			`OIDTipoArticulo` varchar(36) NOT NULL,
+			UNIQUE (OIDArticulo),
+			UNIQUE (codigoArticulo),
   
   			PRIMARY KEY (`OIDArticulo`),
   			KEY `OIDProveedor` (`OIDProveedor`),
@@ -57,6 +63,8 @@ CREATE TABLE `estadoordenproduccion` (
   			`codigoEstadoOrdenProduccion` int(10) NOT NULL,
   			`nombreEstadoOrdenProduccion` varchar(36) NOT NULL,
 			`fechaInhabilitacionEstadoOrdenProduccion` varchar(10) NULL,
+			UNIQUE (OIDEstadoOrdenProduccion),
+			UNIQUE (codigoEstadoOrdenProduccion),
   			
 			PRIMARY KEY (`OIDEstadoOrdenProduccion`)
 			) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -66,6 +74,8 @@ DROP TABLE IF EXISTS `produccionprocesoelaboracion`;
 CREATE TABLE `produccionprocesoelaboracion` (
   			`OIDProduccionProcesoElaboracion` varchar(36) NOT NULL,
   			`codigoProduccionProcesoElaboracion` int(10) NOT NULL,
+			UNIQUE (OIDProduccionProcesoElaboracion),
+			UNIQUE (codigoProduccionProcesoElaboracion),
   			
 			PRIMARY KEY (`OIDProduccionProcesoElaboracion`)
 			) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -79,6 +89,8 @@ CREATE TABLE `centrotrabajo` (
 			`tiempoPorUnidadCentroTrabajo` float NOT NULL,
 			`tipoDeUnidadCentroTrabajo` varchar(36) NOT NULL,
 			`fechaInhabilitacionCentroTrabajo` varchar(10) NULL,
+			UNIQUE (OIDCentroTrabajo),
+			UNIQUE (codigoCentroTrabajo),
   			
 			PRIMARY KEY (`OIDCentroTrabajo`)
 			) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -93,6 +105,8 @@ CREATE TABLE `maquinaherramienta` (
 			`numeroMaquinaHerramienta` int(10) NOT NULL,
 			`fechaInhabilitacionMaquinaHerramienta` varchar(10) NULL,
 			`OIDCentroTrabajo` varchar(36) DEFAULT NULL,
+			UNIQUE (OIDMaquinaHerramienta),
+			UNIQUE (codigoMaquinaHerramienta),
   			
 			PRIMARY KEY (`OIDMaquinaHerramienta`),
 			KEY `OIDCentroTrabajo` (`OIDCentroTrabajo`),
@@ -105,6 +119,7 @@ CREATE TABLE `rutafabricacion` (
   			`OIDRutaFabricacion` varchar(36) NOT NULL,
   			`numeroRutaFabricacion` int(10) NOT NULL,
 			`fechaInhabilitacionRutaFabricacion` varchar(10) NULL,
+			UNIQUE (OIDRutaFabricacion),
   			
 			PRIMARY KEY (`OIDRutaFabricacion`)
 			) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -119,6 +134,8 @@ CREATE TABLE `productoterminado` (
   			`stockProductoTerminado` int(10) NULL,
 			`fechaInhabilitacionProductoTerminado` varchar(10) NULL,
 			`OIDRutaFabricacion` varchar(36) NOT NULL,
+			UNIQUE (OIDProductoTerminado),
+			UNIQUE (codigoProductoTerminado),
   			
 			PRIMARY KEY (`OIDProductoTerminado`),
 			CONSTRAINT `OIDRutaFabricacion` FOREIGN KEY (`OIDRutaFabricacion`) REFERENCES `rutafabricacion` (`OIDRutaFabricacion`)
@@ -131,6 +148,7 @@ CREATE TABLE `ordenproduccion` (
   			`fechaEntregaOrdenProduccion` date NOT NULL,
 			`fechaRecepcionOrdenProduccion` varchar(10) NOT NULL,
 			`numeroOrdenProduccion` int NOT NULL,
+			UNIQUE (OIDOrdenProduccion),
   			
 			PRIMARY KEY (`OIDOrdenProduccion`)
 			) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -145,6 +163,7 @@ CREATE TABLE `ordenproduccionestado` (
 			`OIDMaquinaHerramienta` varchar(36) NOT NULL,
 			`OIDCentroTrabajo` varchar(36) NOT NULL,
 			`OIDOrdenProduccion` varchar(36) DEFAULT NULL,
+			UNIQUE (OIDOrdenProduccionEstado),
   
   			PRIMARY KEY (`OIDOrdenProduccionEstado`),
   			KEY `OIDEstadoOrdenProduccion` (`OIDEstadoOrdenProduccion`),
@@ -172,6 +191,8 @@ CREATE TABLE `subarticulo` (
 			`stockSubArticulo` int(10) NOT NULL,
   			`OIDArticulo` varchar(36) NOT NULL,
 			`OIDOrdenProduccionEstado` varchar(36) DEFAULT NULL,
+			UNIQUE (OIDSubArticulo),
+			UNIQUE (codigoSubArticulo),
 
   			PRIMARY KEY (`OIDSubArticulo`),
   			KEY `OIDArticulo` (`OIDArticulo`),
@@ -188,6 +209,7 @@ CREATE TABLE `articuloproducto` (
   			`cantidadArticuloProducto` int(10) NOT NULL,
   			`OIDSubArticulo` varchar(36) NOT NULL,
 			`OIDProductoTerminado` varchar(36) DEFAULT NULL,
+			UNIQUE (OIDArticuloProducto),
   
   			PRIMARY KEY (`OIDArticuloProducto`),
   			KEY `OIDSubArticulo` (`OIDSubArticulo`),
@@ -204,6 +226,7 @@ CREATE TABLE `detallerutafabricacion` (
   			`ordenDetalleRutaFabricacion` int(10) NOT NULL,
 			`OIDCentroTrabajo` varchar(36) NOT NULL,
 			`OIDRutaFabricacion` varchar(36) DEFAULT NULL,
+			UNIQUE (OIDDetalleRutaFabricacion),
   			
 			PRIMARY KEY (`OIDDetalleRutaFabricacion`),
 			KEY `OIDCentroTrabajo` (`OIDCentroTrabajo`),

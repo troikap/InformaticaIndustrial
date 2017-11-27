@@ -10,7 +10,7 @@ import static com.sun.org.apache.xalan.internal.lib.ExsltDatetime.date;
 public class DTOProveedor {
     
     private int codigoDTOProveedor;
-    private boolean eliminar;
+    //private boolean eliminar;
     private String nombreDTOProveedor;
     private String fechaDTOProveedor;
     private String correoDTOProveedor;
@@ -57,7 +57,7 @@ public class DTOProveedor {
     public void setCodigoDTOProveedor(int codigoDTOProveedor) {
         this.codigoDTOProveedor = codigoDTOProveedor;
     }
-
+/*
     public boolean isEliminar() {
         return eliminar;
     }
@@ -65,7 +65,7 @@ public class DTOProveedor {
     public void setEliminar(boolean eliminar) {
         this.eliminar = eliminar;
     }
-
+*/
     public String getNombreDTOProveedor() {
         return nombreDTOProveedor;
     }

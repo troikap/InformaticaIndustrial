@@ -1,7 +1,6 @@
 
 package main;
-
-import dto.DTOProveedor;
+import dto.DTOTipoArticulo;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import static org.hibernate.jpa.criteria.ValueHandlerFactory.isNumeric;
@@ -10,17 +9,19 @@ import static org.hibernate.jpa.criteria.ValueHandlerFactory.isNumeric;
  *
  * @author TroikaP
  */
-public class InterfazProveedor extends javax.swing.JFrame {
+public class InterfazTipoArticulo extends javax.swing.JFrame {
 
-    //private boolean Agregar;
+    /**
+     * Creates new form InterfazTipoArticulo
+     */
     private ControladorDistribucionPapelFilm controlador;
-    private InterfazABMProveedor pantallaSecundaria;
+    private InterfazABMTipoArticulo pantallaSecundaria;
     private boolean Agregar;
-    public InterfazProveedor() {
+    public InterfazTipoArticulo() {
         initComponents();
     }
     
-    public InterfazProveedor(ControladorDistribucionPapelFilm controlador, InterfazABMProveedor interfaz) {
+    public InterfazTipoArticulo(ControladorDistribucionPapelFilm controlador, InterfazABMTipoArticulo interfaz) {
         initComponents();
         //this.Agregar = false;
         this.controlador = controlador;
@@ -28,21 +29,17 @@ public class InterfazProveedor extends javax.swing.JFrame {
         this.Agregar = true;
     }
         
-    public InterfazProveedor(ControladorDistribucionPapelFilm controlador, InterfazABMProveedor interfaz, DTOProveedor dto) {
+    public InterfazTipoArticulo(ControladorDistribucionPapelFilm controlador, InterfazABMTipoArticulo interfaz, DTOTipoArticulo dto) {
         initComponents();
         //this.Agregar = false;
         this.controlador = controlador;
         this.pantallaSecundaria = interfaz;
         this.Agregar = false;
         this.TextoCodigo.disable();
-        TextoCodigo.setText(String.valueOf(dto.getCodigoDTOProveedor()));
-        TextoNombre.setText(dto.getNombreDTOProveedor());
-        TextoCorreo.setText(dto.getCorreoDTOProveedor());
-        TextoDireccion.setText(dto.getDireccionDTOProveedor());
-        TextoTelefono.setText(String.valueOf(dto.getTelefonoDTOProveedor()));
-        
+        TextoCodigo.setText(String.valueOf(dto.getCodigoDTOTipoArticulo()));
+        TextoNombre.setText(dto.getNombreDTOTipoArticulo());
     }
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -55,21 +52,14 @@ public class InterfazProveedor extends javax.swing.JFrame {
         jInternalFrame1 = new javax.swing.JInternalFrame();
         TextoCodigo = new javax.swing.JTextField();
         TextoNombre = new javax.swing.JTextField();
-        TextoCorreo = new javax.swing.JTextField();
-        TextoDireccion = new javax.swing.JTextField();
         Codigo = new javax.swing.JLabel();
         Nombre = new javax.swing.JLabel();
-        Correo = new javax.swing.JLabel();
-        Direccion = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         Aceptar = new javax.swing.JButton();
         Cancelar = new javax.swing.JButton();
-        Telefono = new javax.swing.JLabel();
-        TextoTelefono = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jInternalFrame1.setTitle("Proveedor");
         jInternalFrame1.setVisible(true);
 
         TextoCodigo.addActionListener(new java.awt.event.ActionListener() {
@@ -82,11 +72,7 @@ public class InterfazProveedor extends javax.swing.JFrame {
 
         Nombre.setText("Nombre");
 
-        Correo.setText("Correo");
-
-        Direccion.setText("Direccion");
-
-        jLabel5.setText("Sobre el Proveedor");
+        jLabel5.setText("Sobre el Tipo Articulo");
 
         Aceptar.setText("Aceptar");
         Aceptar.addActionListener(new java.awt.event.ActionListener() {
@@ -102,8 +88,6 @@ public class InterfazProveedor extends javax.swing.JFrame {
             }
         });
 
-        Telefono.setText("Telefono");
-
         javax.swing.GroupLayout jInternalFrame1Layout = new javax.swing.GroupLayout(jInternalFrame1.getContentPane());
         jInternalFrame1.getContentPane().setLayout(jInternalFrame1Layout);
         jInternalFrame1Layout.setHorizontalGroup(
@@ -114,25 +98,21 @@ public class InterfazProveedor extends javax.swing.JFrame {
                         .addGap(35, 35, 35)
                         .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel5)
-                            .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(Codigo)
-                                .addComponent(Nombre)
-                                .addComponent(Correo)
-                                .addComponent(Direccion)
-                                .addComponent(Telefono)))
+                            .addGroup(jInternalFrame1Layout.createSequentialGroup()
+                                .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(Codigo)
+                                    .addComponent(Nombre))
+                                .addGap(6, 6, 6)))
                         .addGap(110, 110, 110)
                         .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(TextoCodigo, javax.swing.GroupLayout.DEFAULT_SIZE, 143, Short.MAX_VALUE)
-                            .addComponent(TextoNombre)
-                            .addComponent(TextoCorreo)
-                            .addComponent(TextoDireccion)
-                            .addComponent(TextoTelefono, javax.swing.GroupLayout.Alignment.TRAILING)))
+                            .addComponent(TextoNombre)))
                     .addGroup(jInternalFrame1Layout.createSequentialGroup()
-                        .addGap(116, 116, 116)
+                        .addGap(111, 111, 111)
                         .addComponent(Aceptar)
-                        .addGap(99, 99, 99)
+                        .addGap(75, 75, 75)
                         .addComponent(Cancelar)))
-                .addContainerGap(43, Short.MAX_VALUE))
+                .addContainerGap(59, Short.MAX_VALUE))
         );
         jInternalFrame1Layout.setVerticalGroup(
             jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -147,32 +127,18 @@ public class InterfazProveedor extends javax.swing.JFrame {
                 .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(TextoNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Nombre))
-                .addGap(18, 18, 18)
-                .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(TextoCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Correo))
-                .addGap(18, 18, 18)
-                .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(TextoDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Direccion))
-                .addGap(18, 18, 18)
-                .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Telefono)
-                    .addComponent(TextoTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(20, 20, 20)
+                .addGap(37, 37, 37)
                 .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Aceptar)
                     .addComponent(Cancelar))
-                .addContainerGap(31, Short.MAX_VALUE))
+                .addContainerGap(47, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jInternalFrame1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jInternalFrame1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -188,26 +154,19 @@ public class InterfazProveedor extends javax.swing.JFrame {
 
     private void AceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AceptarActionPerformed
         // TODO add your handling code here:
-        
-        if (TextoCodigo.getText()!=null && !TextoCodigo.getText().trim().isEmpty() && TextoNombre.getText()!=null && !TextoNombre.getText().trim().isEmpty() && TextoCorreo.getText()!=null && !TextoCorreo.getText().trim().isEmpty() && TextoDireccion.getText()!=null && !TextoDireccion.getText().trim().isEmpty() && TextoTelefono.getText()!=null && !TextoTelefono.getText().trim().isEmpty())
-            {
-                DTOProveedor dtoNuevo = new DTOProveedor();
-                dtoNuevo.setCodigoDTOProveedor(Integer.parseInt(TextoCodigo.getText()));
-                dtoNuevo.setNombreDTOProveedor(TextoNombre.getText());
-                dtoNuevo.setCorreoDTOProveedor(TextoCorreo.getText());
-                dtoNuevo.setDireccionDTOProveedor(TextoDireccion.getText());
-                dtoNuevo.setTelefonoDTOProveedor(Integer.parseInt(TextoTelefono.getText()));
-                dtoNuevo.setFechaDTOProveedor(null);
-                
-                controlador.GuardarProveedor(dtoNuevo, this.Agregar);
-                //this.setVisible(false);
-                this.dispose();
-                //pantallaSecundaria.setVisible(true);
-                InterfazABMProveedor newInterfaz = new InterfazABMProveedor(controlador,null);
-                newInterfaz.setVisible(true);
-            }
-            else{ JOptionPane.showMessageDialog(null, "Esta vacio algun campo.");
-        }        
+        if (TextoCodigo.getText()!=null && !TextoCodigo.getText().trim().isEmpty() && TextoNombre.getText()!=null && !TextoNombre.getText().trim().isEmpty())
+        {
+            DTOTipoArticulo dtoNuevo = new DTOTipoArticulo();
+            dtoNuevo.setCodigoDTOTipoArticulo(Integer.parseInt(TextoCodigo.getText()));
+            dtoNuevo.setNombreDTOTipoArticulo(TextoNombre.getText());
+            dtoNuevo.setFechaDTOTipoArticulo(null);
+            controlador.GuardarTipoArticulo(dtoNuevo, this.Agregar);
+            this.dispose();
+            InterfazABMTipoArticulo newInterfaz = new InterfazABMTipoArticulo(controlador,null);
+            newInterfaz.setVisible(true);
+        }
+        else{ JOptionPane.showMessageDialog(null, "Esta vacio algun campo.");
+        }
     }//GEN-LAST:event_AceptarActionPerformed
 
     private void CancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelarActionPerformed
@@ -234,20 +193,20 @@ public class InterfazProveedor extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(InterfazProveedor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(InterfazTipoArticulo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(InterfazProveedor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(InterfazTipoArticulo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(InterfazProveedor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(InterfazTipoArticulo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(InterfazProveedor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(InterfazTipoArticulo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new InterfazProveedor().setVisible(true);
+                new InterfazTipoArticulo().setVisible(true);
             }
         });
     }
@@ -256,15 +215,9 @@ public class InterfazProveedor extends javax.swing.JFrame {
     private javax.swing.JButton Aceptar;
     private javax.swing.JButton Cancelar;
     private javax.swing.JLabel Codigo;
-    private javax.swing.JLabel Correo;
-    private javax.swing.JLabel Direccion;
     private javax.swing.JLabel Nombre;
-    private javax.swing.JLabel Telefono;
     private javax.swing.JTextField TextoCodigo;
-    private javax.swing.JTextField TextoCorreo;
-    private javax.swing.JTextField TextoDireccion;
     private javax.swing.JTextField TextoNombre;
-    private javax.swing.JTextField TextoTelefono;
     private javax.swing.JInternalFrame jInternalFrame1;
     private javax.swing.JLabel jLabel5;
     // End of variables declaration//GEN-END:variables
