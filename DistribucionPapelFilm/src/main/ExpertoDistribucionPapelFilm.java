@@ -1,7 +1,9 @@
 
 package main;
 
+import dto.DTOPT;
 import dto.DTOProveedor;
+import entidades.ProductoTerminado;
 import entidades.Proveedor;
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -118,6 +120,50 @@ public class ExpertoDistribucionPapelFilm {
                 }
             }*/
                 FachadaPersistencia.getInstance().guardar(nuevoProveedor);
+        }
+    
+    public List<DTOPT> buscarPT(String nombre, boolean inhabilitado){
+        List<DTOCriterio> criterioList = new ArrayList<>();
+            DTOCriterio criterio1 = new DTOCriterio();
+            criterio1.setAtributo("fechaInhabilitacionProductoTerminado");
+            criterio1.setOperacion("isNull");
+            criterio1.setValor(null);
+            criterioList.clear();
+            if (inhabilitado) {criterioList.add(criterio1);}
+            DTOCriterio criterio2 = new DTOCriterio();
+            criterio2.setAtributo("nombreProductoTerminado");
+            criterio2.setOperacion("LIKE");
+            criterio2.setValor(nombre);
+            if (nombre != null)criterioList.add(criterio2);
+            
+            List<Object> busqueda = FachadaPersistencia.getInstance().buscar("ProductoTerminado", criterioList);
+            List<DTOPT> listdtoPT = new ArrayList<>();
+            for (Object entidad : busqueda) {
+                DTOPT dto = new DTOPT();
+                dto.setCodigo(((ProductoTerminado)entidad).getCodigoProductoTerminado());
+                dto.setNombre(((ProductoTerminado)entidad).getNombreProductoTerminado());
+                dto.setCosto(((ProductoTerminado)entidad).getCostoProductoTerminado());
+                dto.setHabilitado(((ProductoTerminado)entidad).getFechaInhabilitacionProductoTerminado());
+                dto.setStock(((ProductoTerminado)entidad).getStockProductoTerminado());
+                 
+                List<DTOCriterio> criterioList2 = new ArrayList<>();
+                    DTOCriterio criterio3 = new DTOCriterio();
+                    criterio3.setAtributo("ProductoTerminado");
+                    criterio3.setOperacion("LIKE");
+                    criterio3.setValor(entidad);
+                    List<Object> busqueda2 = FachadaPersistencia.getInstance().buscar("OrdenProduccion", criterioList2);
+                dto.setCantidadOP(busqueda2.size());
+                
+                
+                String f = ((ProductoTerminado)entidad).getFechaInhabilitacionProductoTerminado();
+                if (f!=null){
+                dto.setHabilitado(f);
+                }
+                else dto.setHabilitado("SI");
+                
+                listdtoPT.add(dto);
+            }
+            return listdtoPT;
         }
         
     }

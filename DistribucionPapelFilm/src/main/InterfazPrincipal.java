@@ -183,6 +183,9 @@ public class InterfazPrincipal extends javax.swing.JFrame {
 
     private void ProductoTerminadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ProductoTerminadoActionPerformed
         // TODO add your handling code here:
+        InterfazABMProductoTerminado interfazABMPT = new InterfazABMProductoTerminado(controlador, this);
+        interfazABMPT.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_ProductoTerminadoActionPerformed
 
     private void RutaFabricacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RutaFabricacionActionPerformed

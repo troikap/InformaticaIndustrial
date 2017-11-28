@@ -15,6 +15,7 @@ public class ControladorDistribucionPapelFilm {
     {
         return experto.BuscarProveedor(a,b);
     }
+    
 
     public void EliminarProveedor(DTOProveedor a) 
     {
@@ -25,6 +26,10 @@ public class ControladorDistribucionPapelFilm {
     {
         
         experto.GuardarProveedor(dtoProv);
+    }
+    
+    public List<DTOPT> BuscarPT(String a, boolean b){
+        return experto.buscarPT(a, b);
     }
     
 }
