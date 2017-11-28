@@ -35,5 +35,17 @@ public class ControladorDistribucionPapelFilm {
     {
         experto.GuardarTipoArticulo(dto, Agregar);
     }
+    public List<DTOArticulo> BuscarArticulo(String a,boolean b) 
+    {
+        return experto.BuscarArticulo(a,b);
+    }
+    public void EliminarArticulo(DTOArticulo a) 
+    {
+        experto.EliminarArticulo(a);
+    }
+    public void GuardarArticulo(DTOArticulo dto, boolean Agregar)
+    {
+        experto.GuardarArticulo(dto, Agregar);
+    }
 }
   

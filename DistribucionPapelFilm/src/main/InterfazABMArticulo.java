@@ -9,39 +9,39 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author TroikaP
  */
-public class InterfazABMTipoArticulo extends javax.swing.JFrame {
-
-    public InterfazABMTipoArticulo() {
-        initComponents();
-    }
+public class InterfazABMArticulo extends javax.swing.JFrame {
     DefaultTableModel modeloTabla;
     private ControladorDistribucionPapelFilm controlador;
-    private List<String> listCombox;
     InterfazPrincipal pantallaPrincipal;
-    
-    
-
-    public InterfazABMTipoArticulo(ControladorDistribucionPapelFilm controlador, InterfazPrincipal interfaz) {
+    /**
+     * Creates new form InterfazABMArticulo
+     */
+    public InterfazABMArticulo() {
+        initComponents();
+    }
+    public InterfazABMArticulo(ControladorDistribucionPapelFilm controlador, InterfazPrincipal interfaz) {
         initComponents();
         modeloTabla=new DefaultTableModel();
         modeloTabla.addColumn("Codigo");
         modeloTabla.addColumn("Nombre");
+        modeloTabla.addColumn("Descripcion");
         modeloTabla.addColumn("Habilitado");
-        this.TablaTipoArticulo.setModel(modeloTabla);
+        this.Tabla.setModel(modeloTabla);
         this.controlador = controlador;
         this.pantallaPrincipal = interfaz;
-        List<DTOTipoArticulo> dtoList = controlador.BuscarTipoArticulo("",false);
-            for (int i = 0; i < TablaTipoArticulo.getRowCount(); i++) 
+        List<DTOArticulo> dtoList = controlador.BuscarArticulo("",false);
+            for (int i = 0; i < Tabla.getRowCount(); i++) 
             {
                 modeloTabla.removeRow(i);
                 i-=1;
             }
-            String []Dat = new String[3];
-            for(DTOTipoArticulo dtotipo : dtoList)
+            String []Dat = new String[4];
+            for(DTOArticulo dtotipo : dtoList)
             {
-                Dat[0]= String.valueOf(dtotipo.getCodigoDTOTipoArticulo());
-                Dat[1]=dtotipo.getNombreDTOTipoArticulo();
-                Dat[2]=dtotipo.getFechaDTOTipoArticulo();
+                Dat[0]= String.valueOf(dtotipo.getCodigoDTOArticulo());
+                Dat[1]=dtotipo.getNombreDTOArticulo();
+                Dat[2]=dtotipo.getDescripcionDTOArticulo();
+                Dat[3]=dtotipo.getFechaDTOArticulo();
                 modeloTabla.addRow(Dat);
             }
     }
@@ -56,36 +56,31 @@ public class InterfazABMTipoArticulo extends javax.swing.JFrame {
                 }
             return model;
         }
-    private void actualizarTipoArticulo()
+    private void actualizar()
         {
             String a = TextoNombre.getText();
             Boolean b = CheckHabilitado.isSelected();
-            String []Datos = new String[3];
-            List<DTOTipoArticulo> dtoList = controlador.BuscarTipoArticulo(a,b);
-            for (int i = 0; i < TablaTipoArticulo.getRowCount(); i++) 
+            String []Datos = new String[4];
+            List<DTOArticulo> dtoList = controlador.BuscarArticulo(a,b);
+            for (int i = 0; i < Tabla.getRowCount(); i++) 
             {
                 modeloTabla.removeRow(i);
                 i-=1;
             }
-            for(DTOTipoArticulo dtotipo : dtoList)
+            for(DTOArticulo dtotipo : dtoList)
             {
-                Datos[0]= String.valueOf(dtotipo.getCodigoDTOTipoArticulo());
-                Datos[1]=dtotipo.getNombreDTOTipoArticulo();
-                Datos[2]=dtotipo.getFechaDTOTipoArticulo();
+                Datos[0]=String.valueOf(dtotipo.getCodigoDTOArticulo());
+                Datos[1]=dtotipo.getNombreDTOArticulo();
+                Datos[2]=dtotipo.getDescripcionDTOArticulo();
+                Datos[3]=dtotipo.getFechaDTOArticulo();
                 modeloTabla.addRow(Datos);
             }
         }
     
-    public void GuardarTipoArticulo(DTOTipoArticulo dtoTipArt, boolean Agregar)
+    public void GuardarArticulo(DTOArticulo dto, boolean Agregar)
     {
-        controlador.GuardarTipoArticulo(dtoTipArt, Agregar);
+        controlador.GuardarArticulo(dto, Agregar);
     } 
-    
-    private boolean findInString(String word, String text)
-    {
-        return text.indexOf(word) > -1;
-    }
-    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -95,7 +90,7 @@ public class InterfazABMTipoArticulo extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        ABMTipoArticulo = new javax.swing.JInternalFrame();
+        ABMArticulo = new javax.swing.JInternalFrame();
         BotonModificar = new javax.swing.JButton();
         BotonEliminar = new javax.swing.JButton();
         BotonAgregar = new javax.swing.JButton();
@@ -106,14 +101,14 @@ public class InterfazABMTipoArticulo extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         BotonBuscar = new javax.swing.JButton();
         jScrollPane4 = new javax.swing.JScrollPane();
-        TablaTipoArticulo = new javax.swing.JTable();
+        Tabla = new javax.swing.JTable();
         Volver = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        ABMTipoArticulo.setResizable(true);
-        ABMTipoArticulo.setTitle("ABMTipoArticulo");
-        ABMTipoArticulo.setVisible(true);
+        ABMArticulo.setResizable(true);
+        ABMArticulo.setTitle("ABMArticulo");
+        ABMArticulo.setVisible(true);
 
         BotonModificar.setText("Modificar");
         BotonModificar.setToolTipText("");
@@ -157,7 +152,7 @@ public class InterfazABMTipoArticulo extends javax.swing.JFrame {
             }
         });
 
-        TablaTipoArticulo.setModel(new javax.swing.table.DefaultTableModel(
+        Tabla.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {},
                 {},
@@ -168,7 +163,7 @@ public class InterfazABMTipoArticulo extends javax.swing.JFrame {
 
             }
         ));
-        jScrollPane4.setViewportView(TablaTipoArticulo);
+        jScrollPane4.setViewportView(Tabla);
 
         Volver.setText("Volver");
         Volver.addActionListener(new java.awt.event.ActionListener() {
@@ -177,131 +172,137 @@ public class InterfazABMTipoArticulo extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout ABMTipoArticuloLayout = new javax.swing.GroupLayout(ABMTipoArticulo.getContentPane());
-        ABMTipoArticulo.getContentPane().setLayout(ABMTipoArticuloLayout);
-        ABMTipoArticuloLayout.setHorizontalGroup(
-            ABMTipoArticuloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(ABMTipoArticuloLayout.createSequentialGroup()
+        javax.swing.GroupLayout ABMArticuloLayout = new javax.swing.GroupLayout(ABMArticulo.getContentPane());
+        ABMArticulo.getContentPane().setLayout(ABMArticuloLayout);
+        ABMArticuloLayout.setHorizontalGroup(
+            ABMArticuloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(ABMArticuloLayout.createSequentialGroup()
                 .addGap(23, 23, 23)
-                .addGroup(ABMTipoArticuloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(ABMArticuloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(BotonEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(BotonAgregar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(BotonModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(ABMTipoArticuloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(ABMTipoArticuloLayout.createSequentialGroup()
-                        .addGap(61, 61, 61)
+                    .addComponent(BotonModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(ABMArticuloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(ABMArticuloLayout.createSequentialGroup()
+                        .addGap(59, 59, 59)
                         .addComponent(jLabel1)
                         .addGap(64, 64, 64)
-                        .addGroup(ABMTipoArticuloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(ABMArticuloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2)
                             .addComponent(jLabel3))
                         .addGap(39, 39, 39)
-                        .addGroup(ABMTipoArticuloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(ABMArticuloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(CheckHabilitado)
-                            .addGroup(ABMTipoArticuloLayout.createSequentialGroup()
+                            .addGroup(ABMArticuloLayout.createSequentialGroup()
                                 .addComponent(TextoNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(34, 34, 34)
                                 .addComponent(BotonBuscar))))
-                    .addGroup(ABMTipoArticuloLayout.createSequentialGroup()
-                        .addGap(35, 35, 35)
-                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 578, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(ABMArticuloLayout.createSequentialGroup()
+                        .addGap(33, 33, 33)
+                        .addGroup(ABMArticuloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 578, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ABMArticuloLayout.createSequentialGroup()
+                                .addComponent(Volver)
+                                .addGap(27, 27, 27)))))
                 .addContainerGap(67, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ABMTipoArticuloLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(Volver)
-                .addGap(56, 56, 56))
         );
-        ABMTipoArticuloLayout.setVerticalGroup(
-            ABMTipoArticuloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(ABMTipoArticuloLayout.createSequentialGroup()
-                .addGroup(ABMTipoArticuloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(ABMTipoArticuloLayout.createSequentialGroup()
+        ABMArticuloLayout.setVerticalGroup(
+            ABMArticuloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(ABMArticuloLayout.createSequentialGroup()
+                .addGroup(ABMArticuloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(ABMArticuloLayout.createSequentialGroup()
                         .addGap(73, 73, 73)
-                        .addGroup(ABMTipoArticuloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addGroup(ABMArticuloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel2)
                             .addComponent(TextoNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(ABMTipoArticuloLayout.createSequentialGroup()
+                    .addGroup(ABMArticuloLayout.createSequentialGroup()
                         .addGap(80, 80, 80)
                         .addComponent(BotonBuscar))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ABMTipoArticuloLayout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ABMArticuloLayout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jLabel1)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(ABMTipoArticuloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(ABMArticuloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(CheckHabilitado)
                     .addComponent(jLabel3))
                 .addGap(41, 41, 41)
-                .addGroup(ABMTipoArticuloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(ABMTipoArticuloLayout.createSequentialGroup()
+                .addGroup(ABMArticuloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(ABMArticuloLayout.createSequentialGroup()
                         .addComponent(BotonModificar)
                         .addGap(47, 47, 47)
                         .addComponent(BotonEliminar)
                         .addGap(51, 51, 51)
                         .addComponent(BotonAgregar))
                     .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                .addGap(37, 37, 37)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
                 .addComponent(Volver)
-                .addContainerGap(63, Short.MAX_VALUE))
+                .addGap(64, 64, 64))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(ABMTipoArticulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(ABMArticulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(ABMTipoArticulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(ABMArticulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void BotonModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonModificarActionPerformed
-        int fila = TablaTipoArticulo.getSelectedRow();
+        int fila = Tabla.getSelectedRow();
         if (fila>=0)
-        {DTOTipoArticulo dtoT = new DTOTipoArticulo(); //Proveedor Seleccionado
-            dtoT.setCodigoDTOTipoArticulo(Integer.parseInt(modeloTabla.getValueAt(fila, 0).toString()));
-            dtoT.setNombreDTOTipoArticulo(modeloTabla.getValueAt(fila, 1).toString());
-            InterfazTipoArticulo newInterfaz = new InterfazTipoArticulo(controlador, this, dtoT);
+        {DTOArticulo dto = new DTOArticulo(); //Articulo Seleccionado
+            dto.setCodigoDTOArticulo(Integer.parseInt(modeloTabla.getValueAt(fila, 0).toString()));
+            dto.setNombreDTOArticulo(modeloTabla.getValueAt(fila, 1).toString());
+            dto.setDescripcionDTOArticulo(modeloTabla.getValueAt(fila, 2).toString());
+            InterfazArticulo newInterfaz = new InterfazArticulo(controlador, this, dto);
             newInterfaz.setVisible(true);
             this.dispose();
         }
-        else { JOptionPane.showMessageDialog(null, "No ha seleccionado ningun TipoArticulo para modificar.");}
+        else { JOptionPane.showMessageDialog(null, "No ha seleccionado ningun Articulo para modificar.");}
     }//GEN-LAST:event_BotonModificarActionPerformed
 
     private void BotonEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonEliminarActionPerformed
-        int filaSeleccionada= TablaTipoArticulo.getSelectedRow();
-        if(filaSeleccionada>=0 && TablaTipoArticulo.getValueAt(filaSeleccionada, 2).toString() == "SI"){
-            System.out.println("el valor es "+TablaTipoArticulo.getValueAt(filaSeleccionada, 2));
-            DTOTipoArticulo DTOEliminado = new DTOTipoArticulo();
-            DTOEliminado.setCodigoDTOTipoArticulo(Integer.parseInt(modeloTabla.getValueAt(filaSeleccionada, 0).toString()));
+        int filaSeleccionada= Tabla.getSelectedRow();
+        if(filaSeleccionada>=0 && Tabla.getValueAt(filaSeleccionada, 3).toString() == "SI"){
+            System.out.println("el valor es "+Tabla.getValueAt(filaSeleccionada, 3));
+            DTOArticulo DTOEliminado = new DTOArticulo();
+            DTOEliminado.setCodigoDTOArticulo(Integer.parseInt(modeloTabla.getValueAt(filaSeleccionada, 0).toString()));
             modeloTabla.removeRow(filaSeleccionada);
-            this.controlador.EliminarTipoArticulo(DTOEliminado);
+            this.controlador.EliminarArticulo(DTOEliminado);
             String a = TextoNombre.getText();
             Boolean b = CheckHabilitado.isSelected();
-            String []Datos = new String[3];
-            List<DTOTipoArticulo> dtoList = controlador.BuscarTipoArticulo(a,b);
-            for (int i = 0; i < TablaTipoArticulo.getRowCount(); i++) {
+            String []Datos = new String[4];
+            List<DTOArticulo> dtoList = controlador.BuscarArticulo(a,b);
+            for (int i = 0; i < Tabla.getRowCount(); i++) {
                 modeloTabla.removeRow(i);
                 i-=1;
             }
-            for(DTOTipoArticulo dtoT : dtoList)
+            for(DTOArticulo dto : dtoList)
             {
-                Datos[0]=String.valueOf(dtoT.getCodigoDTOTipoArticulo());
-                Datos[1]=dtoT.getNombreDTOTipoArticulo();
-                Datos[2]=dtoT.getFechaDTOTipoArticulo();
+                Datos[0]=String.valueOf(dto.getCodigoDTOArticulo());
+                Datos[1]=dto.getNombreDTOArticulo();
+                Datos[2]=dto.getDescripcionDTOArticulo();
+                Datos[3]=dto.getFechaDTOArticulo();
                 modeloTabla.addRow(Datos);
             }
         }
-        else{ JOptionPane.showMessageDialog(null, "No se ha seleccionado ningun TipoArticulo o el seleccionado esta ya Inhabilitado.");
+        else{ JOptionPane.showMessageDialog(null, "No se ha seleccionado ningun Articulo o el seleccionado esta ya Inhabilitado.");
         }
     }//GEN-LAST:event_BotonEliminarActionPerformed
 
     private void BotonAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonAgregarActionPerformed
-        InterfazTipoArticulo nuevaTipoArticulo = new InterfazTipoArticulo(controlador, this);
-        nuevaTipoArticulo.setVisible(true);
+        InterfazArticulo nuevaArticulo = new InterfazArticulo(controlador, this);
+        nuevaArticulo.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_BotonAgregarActionPerformed
 
@@ -311,7 +312,7 @@ public class InterfazABMTipoArticulo extends javax.swing.JFrame {
 
     private void BotonBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonBuscarActionPerformed
         // TODO add your handling code here:
-        actualizarTipoArticulo();
+        actualizar();
     }//GEN-LAST:event_BotonBuscarActionPerformed
 
     private void VolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VolverActionPerformed
@@ -337,32 +338,32 @@ public class InterfazABMTipoArticulo extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(InterfazABMTipoArticulo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(InterfazABMArticulo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(InterfazABMTipoArticulo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(InterfazABMArticulo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(InterfazABMTipoArticulo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(InterfazABMArticulo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(InterfazABMTipoArticulo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(InterfazABMArticulo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new InterfazABMTipoArticulo().setVisible(true);
+                new InterfazABMArticulo().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JInternalFrame ABMTipoArticulo;
+    private javax.swing.JInternalFrame ABMArticulo;
     private javax.swing.JButton BotonAgregar;
     private javax.swing.JButton BotonBuscar;
     private javax.swing.JButton BotonEliminar;
     private javax.swing.JButton BotonModificar;
     private javax.swing.JCheckBox CheckHabilitado;
-    private javax.swing.JTable TablaTipoArticulo;
+    private javax.swing.JTable Tabla;
     private javax.swing.JTextField TextoNombre;
     private javax.swing.JButton Volver;
     private javax.swing.JLabel jLabel1;

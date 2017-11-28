@@ -40,11 +40,11 @@ DROP TABLE IF EXISTS `articulo`;
 CREATE TABLE `articulo` (
   			`OIDArticulo` varchar(36) NOT NULL,
   			`codigoArticulo` int(10) NOT NULL,
-			`descripcionArticulo` varchar(36) NOT NULL,
 			`nombreArticulo` varchar(36) NOT NULL,
-  			`fechaInhabilitacionArticulo` varchar(10) NULL,
-			`OIDProveedor` varchar(36) NOT NULL,
-  			`OIDTipoArticulo` varchar(36) NOT NULL,
+  			`descripcionArticulo` varchar(36) NOT NULL,
+			`fechaInhabilitacionArticulo` varchar(10) NULL,
+			`OIDProveedor` varchar(36) NULL,
+  			`OIDTipoArticulo` varchar(36) NULL,
 			UNIQUE (OIDArticulo),
 			UNIQUE (codigoArticulo),
   

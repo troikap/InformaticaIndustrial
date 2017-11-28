@@ -178,6 +178,9 @@ public class InterfazPrincipal extends javax.swing.JFrame {
 
     private void ArticuloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ArticuloActionPerformed
         // TODO add your handling code here:
+        InterfazABMArticulo interfaz = new InterfazABMArticulo(controlador, this);
+        interfaz.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_ArticuloActionPerformed
 
     private void SubArticuloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SubArticuloActionPerformed

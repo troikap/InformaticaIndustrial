@@ -17,7 +17,6 @@ import java.util.logging.Logger;
  * @author TroikaP
  */
 public class ExpertoDistribucionPapelFilm {
-    
     public String nuevaFecha()
         {
             String algo= "";
@@ -58,7 +57,6 @@ public class ExpertoDistribucionPapelFilm {
                 dto.setCorreoDTOProveedor(((Proveedor)entidad).getCorreoProveedor());
                 dto.setDireccionDTOProveedor(((Proveedor)entidad).getDireccionProveedor());
                 dto.setTelefonoDTOProveedor(((Proveedor)entidad).getTelefonoProveedor());
-                //dto.setEliminar(false);
                 String f = ((Proveedor)entidad).getFechaInhabilitacionProveedor();
                 if (f!=null){
                 dto.setFechaDTOProveedor(f);
@@ -258,6 +256,151 @@ public class ExpertoDistribucionPapelFilm {
                         modificar.setFechaInhabilitacionTipoArticulo(nuevo.getFechaInhabilitacionTipoArticulo());
                         FachadaPersistencia.getInstance().guardar(modificar);
                     }else{System.out.println("No existe Modificacion alguna");}
-                }
             }
         }
+    public List<DTOArticulo> BuscarArticulo (String nombre,boolean habilitado) 
+        {
+            List<DTOCriterio> criterioList = new ArrayList<>();
+            DTOCriterio criterio1 = new DTOCriterio();
+            criterio1.setAtributo("fechaInhabilitacionArticulo");
+            criterio1.setOperacion("isNull");
+            criterio1.setValor(null);
+            criterioList.clear();
+            if (habilitado) {criterioList.add(criterio1);}
+            DTOCriterio criterio2 = new DTOCriterio();
+            criterio2.setAtributo("nombreArticulo");
+            criterio2.setOperacion("LIKE");
+            criterio2.setValor(nombre);
+            if (nombre != null)criterioList.add(criterio2);
+            List<Object> busqueda = FachadaPersistencia.getInstance().buscar("Articulo", criterioList);
+            List<DTOArticulo> listdto = new ArrayList<>();
+            for (Object entidad : busqueda) {
+                DTOArticulo dto = new DTOArticulo();
+                dto.setCodigoDTOArticulo(((Articulo)entidad).getCodigoArticulo());
+                dto.setNombreDTOArticulo(((Articulo)entidad).getNombreArticulo());
+                dto.setFechaDTOArticulo(((Articulo)entidad).getFechaInhabilitacionArticulo());
+                dto.setDescripcionDTOArticulo(((Articulo)entidad).getDescripcionArticulo());
+                String f = ((Articulo)entidad).getFechaInhabilitacionArticulo();
+                if (f!=null){
+                dto.setFechaDTOArticulo(f);
+                }
+                else dto.setFechaDTOArticulo("SI");
+                listdto.add(dto);
+            }
+            return listdto;
+        }
+    public void EliminarArticulo(DTOArticulo dtoEliminado)
+        {
+            List<DTOCriterio> criterioList = new ArrayList<>();
+            DTOCriterio criterio1 = new DTOCriterio();
+            criterio1.setAtributo("codigoArticulo");
+            criterio1.setOperacion("=");
+            criterio1.setValor(dtoEliminado.getCodigoDTOArticulo());
+            criterioList.clear();
+            criterioList.add(criterio1);
+            Articulo eliminarArticulo = (Articulo)FachadaPersistencia.getInstance().buscar("Articulo", criterioList).get(0);
+            String alfa = nuevaFecha();
+            eliminarArticulo.setFechaInhabilitacionArticulo(alfa);
+            FachadaPersistencia.getInstance().guardar(eliminarArticulo);
+        }
+    public void GuardarArticulo(DTOArticulo dtoNuevo, boolean Agregar)
+        {
+            int uno = dtoNuevo.getCodigoDTOArticulo();
+            String dos = dtoNuevo.getNombreDTOArticulo();
+            String tres = dtoNuevo.getDescripcionDTOArticulo();
+            String cuatro = dtoNuevo.getFechaDTOArticulo();
+            Articulo nuevo = new Articulo();
+            nuevo.setCodigoArticulo(uno);
+            nuevo.setNombreArticulo(dos);
+            nuevo.setDescripcionArticulo(tres);
+            nuevo.setFechaInhabilitacionArticulo(cuatro);
+            List<Object> lista = FachadaPersistencia.getInstance().buscar("Articulo", null);
+            List<DTOArticulo> listDTO = new ArrayList<>();
+            for (Object entidad : lista) 
+                {
+                    DTOArticulo cadaDTO= new DTOArticulo();
+                    cadaDTO.setCodigoDTOArticulo(((Articulo)entidad).getCodigoArticulo());
+                    cadaDTO.setNombreDTOArticulo(((Articulo)entidad).getNombreArticulo());
+                    cadaDTO.setDescripcionDTOArticulo(((Articulo)entidad).getDescripcionArticulo());
+                    listDTO.add(cadaDTO);
+                }
+            if (Agregar == true)
+            {
+                System.out.println("AGREGAR");
+                int contador=0;
+                for (DTOArticulo cadaDTO : listDTO)
+                    {
+                        if(cadaDTO.getCodigoDTOArticulo()!= uno){contador += 1;}
+                        else{}
+                    }
+                if (contador ==0){
+                    System.out.println("hola que ace");
+                    System.out.println("dtoNuevo.getDtoTipoArticuloDTOArticulo().getCodigoDTOTipoArticulo() es "
+                            + dtoNuevo.getDtoTipoArticuloDTOArticulo().getCodigoDTOTipoArticulo())
+                           ;
+                    System.out.println("hola que ace");
+                    
+                    if(dtoNuevo.getDtoTipoArticuloDTOArticulo().equals(null))
+                    {
+                    } else {
+                        TipoArticulo nuevo1 = new TipoArticulo();
+                        List<DTOCriterio> criterioList = new ArrayList<>();
+                        DTOCriterio criterio = new DTOCriterio();
+                        criterio.setAtributo("codigoTipoArticulo");
+                        criterio.setOperacion("=");
+                        criterio.setValor(nuevo1.getCodigoTipoArticulo());
+                        criterioList.clear();
+                        criterioList.add(criterio);
+                        TipoArticulo nuevo2= (TipoArticulo)FachadaPersistencia.getInstance().buscar("TipoArticulo", criterioList).get(0);
+                        nuevo.setTipoArticulo(nuevo2);
+                        System.out.println("modificando tipo articulo");
+                    }
+                    if(dtoNuevo.getDtoProveedorDTOArticulo().getCodigoDTOProveedor()!=0)
+                    {
+                        Proveedor nuevo1 = new Proveedor();
+                        List<DTOCriterio> criterioList = new ArrayList<>();
+                        DTOCriterio criterio = new DTOCriterio();
+                        criterio.setAtributo("codigoProveedor");
+                        criterio.setOperacion("=");
+                        criterio.setValor(nuevo1.getCodigoProveedor());
+                        criterioList.clear();
+                        criterioList.add(criterio);
+                        Proveedor nuevo2= (Proveedor)FachadaPersistencia.getInstance().buscar("Proveedor", criterioList).get(0);
+                        nuevo.setProveedor(nuevo2);
+                        System.out.println("modificando proveedor");
+                    }
+                    System.out.println("estamos agregando en nuevoArticulo "+nuevo.getCodigoArticulo()+" "+nuevo.getNombreArticulo()+" "+nuevo.getDescripcionArticulo());
+                    FachadaPersistencia.getInstance().guardar(nuevo);
+                }else{System.out.println("Ya existe otro Articulo con ese Codigo");}
+            }
+            else 
+            {
+                System.out.println("MODIFICAR");
+                int contador=0;
+                for (DTOArticulo cadaDTO : listDTO)
+                    {
+                        if(uno == cadaDTO.getCodigoDTOArticulo())
+                        {
+                            if(!dos.equals(cadaDTO.getNombreDTOArticulo())){contador+=1;System.out.println("nombre diferente");}else{ System.out.println("nombre igual");}
+                            if(!tres.equals(cadaDTO.getDescripcionDTOArticulo())){contador+=1;System.out.println("descripcion diferente");}else{ System.out.println("descripcion igual");}
+                        }
+                    }
+                    if (contador != 0){
+                        System.out.println("estamos modificando con nuevoArticulo "+nuevo.getCodigoArticulo()+" "+nuevo.getNombreArticulo()+" "+nuevo.getDescripcionArticulo());
+                        List<DTOCriterio> criterioList = new ArrayList<>();
+                        DTOCriterio criterio = new DTOCriterio();
+                        criterio.setAtributo("codigoArticulo");
+                        criterio.setOperacion("=");
+                        criterio.setValor(nuevo.getCodigoArticulo());
+                        criterioList.clear();
+                        criterioList.add(criterio);
+                        Articulo modificar= (Articulo)FachadaPersistencia.getInstance().buscar("Articulo", criterioList).get(0);
+                        modificar.setNombreArticulo(nuevo.getNombreArticulo());
+                        modificar.setDescripcionArticulo(nuevo.getDescripcionArticulo());
+                        modificar.setFechaInhabilitacionArticulo(nuevo.getFechaInhabilitacionArticulo());
+                        String OID = modificar.getOID();
+                        FachadaPersistencia.getInstance().guardar(modificar);
+                    }else{System.out.println("No existe Modificacion alguna");}
+                }
+            }
+    }

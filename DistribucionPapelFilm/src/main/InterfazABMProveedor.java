@@ -30,11 +30,11 @@ public class InterfazABMProveedor extends javax.swing.JFrame {
         modeloTabla.addColumn("Correo");
         modeloTabla.addColumn("Direccion");
         modeloTabla.addColumn("Habilitado");
-        this.TablaProveedor.setModel(modeloTabla);
+        this.Tabla.setModel(modeloTabla);
         this.controlador = controlador;
         this.pantallaPrincipal = interfaz;
         List<DTOProveedor> dtoList = controlador.BuscarProveedor("",false);
-            for (int i = 0; i < TablaProveedor.getRowCount(); i++) 
+            for (int i = 0; i < Tabla.getRowCount(); i++) 
             {
                 modeloTabla.removeRow(i);
                 i-=1;
@@ -62,13 +62,13 @@ public class InterfazABMProveedor extends javax.swing.JFrame {
                 }
             return model;
         }
-    private void actualizarProveedor()
+    private void actualizar()
         {
             String a = TextoNombre.getText();
             Boolean b = CheckHabilitado.isSelected();
             String []Datos = new String[6];
             List<DTOProveedor> dtoList = controlador.BuscarProveedor(a,b);
-            for (int i = 0; i < TablaProveedor.getRowCount(); i++) 
+            for (int i = 0; i < Tabla.getRowCount(); i++) 
             {
                 modeloTabla.removeRow(i);
                 i-=1;
@@ -84,12 +84,10 @@ public class InterfazABMProveedor extends javax.swing.JFrame {
                 modeloTabla.addRow(Datos);
             }
         }
-    
-    public void GuardarProveedor(DTOProveedor dtoProv, boolean Agregar)
+    public void GuardarProveedor(DTOProveedor dto, boolean Agregar)
     {
-        controlador.GuardarProveedor(dtoProv, Agregar);
+        controlador.GuardarProveedor(dto, Agregar);
     } 
-    
     private boolean findInString(String word, String text)
     {
         return text.indexOf(word) > -1;
@@ -109,7 +107,7 @@ public class InterfazABMProveedor extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         BotonBuscar = new javax.swing.JButton();
         jScrollPane4 = new javax.swing.JScrollPane();
-        TablaProveedor = new javax.swing.JTable();
+        Tabla = new javax.swing.JTable();
         Volver = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -160,7 +158,7 @@ public class InterfazABMProveedor extends javax.swing.JFrame {
             }
         });
 
-        TablaProveedor.setModel(new javax.swing.table.DefaultTableModel(
+        Tabla.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {},
                 {},
@@ -171,7 +169,7 @@ public class InterfazABMProveedor extends javax.swing.JFrame {
 
             }
         ));
-        jScrollPane4.setViewportView(TablaProveedor);
+        jScrollPane4.setViewportView(Tabla);
 
         Volver.setText("Volver");
         Volver.addActionListener(new java.awt.event.ActionListener() {
@@ -262,15 +260,15 @@ public class InterfazABMProveedor extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BotonModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonModificarActionPerformed
-        int fila = TablaProveedor.getSelectedRow();
+        int fila = Tabla.getSelectedRow();
         if (fila>=0)
-        {DTOProveedor dtoP = new DTOProveedor(); //Proveedor Seleccionado 
-        dtoP.setCodigoDTOProveedor(Integer.parseInt(modeloTabla.getValueAt(fila, 0).toString()));
-        dtoP.setNombreDTOProveedor(modeloTabla.getValueAt(fila, 1).toString());
-        dtoP.setTelefonoDTOProveedor(Integer.parseInt(modeloTabla.getValueAt(fila, 2).toString()));
-        dtoP.setCorreoDTOProveedor(modeloTabla.getValueAt(fila, 3).toString());
-        dtoP.setDireccionDTOProveedor(modeloTabla.getValueAt(fila, 4).toString());
-        InterfazProveedor newInterfaz = new InterfazProveedor(controlador, this, dtoP);
+        {DTOProveedor dto = new DTOProveedor(); //Proveedor Seleccionado 
+        dto.setCodigoDTOProveedor(Integer.parseInt(modeloTabla.getValueAt(fila, 0).toString()));
+        dto.setNombreDTOProveedor(modeloTabla.getValueAt(fila, 1).toString());
+        dto.setTelefonoDTOProveedor(Integer.parseInt(modeloTabla.getValueAt(fila, 2).toString()));
+        dto.setCorreoDTOProveedor(modeloTabla.getValueAt(fila, 3).toString());
+        dto.setDireccionDTOProveedor(modeloTabla.getValueAt(fila, 4).toString());
+        InterfazProveedor newInterfaz = new InterfazProveedor(controlador, this, dto);
         newInterfaz.setVisible(true);
         this.dispose();
         }
@@ -278,9 +276,9 @@ public class InterfazABMProveedor extends javax.swing.JFrame {
     }//GEN-LAST:event_BotonModificarActionPerformed
 
     private void BotonEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonEliminarActionPerformed
-        int filaSeleccionada= TablaProveedor.getSelectedRow();
-        if(filaSeleccionada>=0 && TablaProveedor.getValueAt(filaSeleccionada, 5).toString() == "SI"){
-            System.out.println("el valor es "+TablaProveedor.getValueAt(filaSeleccionada, 5));
+        int filaSeleccionada= Tabla.getSelectedRow();
+        if(filaSeleccionada>=0 && Tabla.getValueAt(filaSeleccionada, 5).toString() == "SI"){
+            System.out.println("el valor es "+Tabla.getValueAt(filaSeleccionada, 5));
             DTOProveedor DTOEliminado = new DTOProveedor();
             DTOEliminado.setCodigoDTOProveedor(Integer.parseInt(modeloTabla.getValueAt(filaSeleccionada, 0).toString()));
             modeloTabla.removeRow(filaSeleccionada);
@@ -289,18 +287,18 @@ public class InterfazABMProveedor extends javax.swing.JFrame {
             Boolean b = CheckHabilitado.isSelected();
             String []Datos = new String[6];
             List<DTOProveedor> dtoList = controlador.BuscarProveedor(a,b);
-            for (int i = 0; i < TablaProveedor.getRowCount(); i++) {
+            for (int i = 0; i < Tabla.getRowCount(); i++) {
                 modeloTabla.removeRow(i);
                 i-=1;
             }
-            for(DTOProveedor dtoP : dtoList)
+            for(DTOProveedor dto : dtoList)
                 {
-                Datos[0]=String.valueOf(dtoP.getCodigoDTOProveedor());
-                Datos[1]=dtoP.getNombreDTOProveedor();
-                Datos[2]=String.valueOf(dtoP.getTelefonoDTOProveedor());
-                Datos[3]=dtoP.getCorreoDTOProveedor();
-                Datos[4]=dtoP.getDireccionDTOProveedor();
-                Datos[5]=dtoP.getFechaDTOProveedor();
+                Datos[0]=String.valueOf(dto.getCodigoDTOProveedor());
+                Datos[1]=dto.getNombreDTOProveedor();
+                Datos[2]=String.valueOf(dto.getTelefonoDTOProveedor());
+                Datos[3]=dto.getCorreoDTOProveedor();
+                Datos[4]=dto.getDireccionDTOProveedor();
+                Datos[5]=dto.getFechaDTOProveedor();
                 modeloTabla.addRow(Datos);
             }
         }
@@ -320,13 +318,15 @@ public class InterfazABMProveedor extends javax.swing.JFrame {
 
     private void BotonBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonBuscarActionPerformed
         // TODO add your handling code here:
-        actualizarProveedor();
+        actualizar();
     }//GEN-LAST:event_BotonBuscarActionPerformed
 
     private void VolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VolverActionPerformed
         // TODO add your handling code here:
-        this.setVisible(false);
+        //this.setVisible(false);
         pantallaPrincipal.setVisible(true);
+        this.dispose();
+        
     }//GEN-LAST:event_VolverActionPerformed
 
     /**
@@ -372,7 +372,7 @@ public class InterfazABMProveedor extends javax.swing.JFrame {
     private javax.swing.JButton BotonEliminar;
     private javax.swing.JButton BotonModificar;
     private javax.swing.JCheckBox CheckHabilitado;
-    private javax.swing.JTable TablaProveedor;
+    private javax.swing.JTable Tabla;
     private javax.swing.JTextField TextoNombre;
     private javax.swing.JButton Volver;
     private javax.swing.JLabel jLabel1;

@@ -40,7 +40,6 @@ public class InterfazProveedor extends javax.swing.JFrame {
         TextoCorreo.setText(dto.getCorreoDTOProveedor());
         TextoDireccion.setText(dto.getDireccionDTOProveedor());
         TextoTelefono.setText(String.valueOf(dto.getTelefonoDTOProveedor()));
-        
     }
     
     /**

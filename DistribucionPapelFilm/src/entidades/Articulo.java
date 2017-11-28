@@ -10,8 +10,8 @@ import java.util.Date;
 public class Articulo extends Entidad {
     
     private int codigoArticulo;
-    private String descripccionArticulo;
-    private Date fechaInhabilitacionArticulo;
+    private String descripcionArticulo;
+    private String fechaInhabilitacionArticulo;
     private String nombreArticulo;
     private Proveedor proveedor;
     private TipoArticulo tipoArticulo;
@@ -27,19 +27,19 @@ public class Articulo extends Entidad {
         this.codigoArticulo = codigoArticulo;
     }
 
-    public String getDescripccionArticulo() {
-        return descripccionArticulo;
+    public String getDescripcionArticulo() {
+        return descripcionArticulo;
     }
 
-    public void setDescripccionArticulo(String descripccionArticulo) {
-        this.descripccionArticulo = descripccionArticulo;
+    public void setDescripcionArticulo(String descripcionArticulo) {
+        this.descripcionArticulo = descripcionArticulo;
     }
 
-    public Date getFechaInhabilitacionArticulo() {
+    public String getFechaInhabilitacionArticulo() {
         return fechaInhabilitacionArticulo;
     }
 
-    public void setFechaInhabilitacionArticulo(Date fechaInhabilitacionArticulo) {
+    public void setFechaInhabilitacionArticulo(String fechaInhabilitacionArticulo) {
         this.fechaInhabilitacionArticulo = fechaInhabilitacionArticulo;
     }
 
